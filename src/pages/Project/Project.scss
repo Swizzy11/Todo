@@ -1,0 +1,78 @@
+$border-color: #5a00a385;
+
+.project {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-radius: 2px;
+    gap: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.currentTask {
+    width: 97%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main {
+    width: 100%;
+    height: 75%;
+
+    span {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+
+        span {
+            display: flex;
+            align-items: center;
+            border: none;
+            font-size: .8rem;
+
+        }
+    }
+    time {
+        margin: 5px;
+        font-size: .8rem;
+    }
+}
+
+footer {
+    width: 80%;
+    height: 20%;
+}
+h5 {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: start;
+}
+
+
+
+@media (min-width: 768px) {
+    .project {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+    
+@media (min-width: 992px) {
+    .project {
+        grid-template-columns: 1fr 4fr;
+    }
+}
+
+@media (min-width: 1200px) {
+}

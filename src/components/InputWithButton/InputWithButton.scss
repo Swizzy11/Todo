@@ -1,0 +1,58 @@
+.group { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forAddProject {
+    position: absolute;
+    opacity: 0;
+    font-size: 18px;
+    padding: 6px 6px 6px 5px;
+    display: block;
+    background-color: #ffffff00;
+    border: none;
+    border-bottom: 1px solid #757575;
+    outline: none;
+    color: white;
+}
+.forAddProject:focus ~ label, .forAddProject:valid ~ label {
+    opacity: 1;
+    top: 20%;
+    font-size: 14px;
+}
+.forAddProject:focus {
+    opacity: 1;
+}
+.forAddProject:valid ~ .btn-addProject{
+    visibility: unset;
+}
+
+.addTaskGroup {
+    position: relative; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.forAddTask {
+    width: 95%;
+    height: 100%;
+    border: none;
+    background-color: #ffffff00;
+    font-size: 16px;
+    color:#ffffff;
+    outline: none;
+}
+.btn-addTask {
+    position: absolute;
+    border: none;
+    right: 0;
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}

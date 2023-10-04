@@ -1,0 +1,16 @@
+.addComments {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+
+    textarea {
+        padding: 4px;
+        width: 100%;
+        resize: none;
+        background: none;
+        outline: none;
+        border-radius: 4px;
+        color: white;
+    }
+}

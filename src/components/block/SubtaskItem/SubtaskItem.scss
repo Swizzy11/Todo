@@ -1,0 +1,27 @@
+.subtaskItem {
+    margin: 1%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: start;
+    border: 1px solid gray;
+    border-radius: 4px;
+    
+    *{
+        margin: .6%;
+    }
+    span {
+        width: 96%;
+        border: none;
+    }
+    time {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-delete {
+        margin: 0;
+    }
+}

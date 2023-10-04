@@ -1,0 +1,79 @@
+.inProgress,
+.onReview,
+.doneTasks,
+.unallocatedTasks {
+    width: 90%;
+}
+
+.task {
+    border-bottom: 1px solid #888;
+    z-index: 1;
+    padding: .5rem;
+    font-family: Adventure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        width: 90%;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: #FFCA28;
+        background: #44444477;
+    }
+}
+
+.taskStatusTitle {
+    font-family: Adventure;
+}
+.taskStatusTitle::before {
+    content: "▶";
+    position: absolute;
+    top: .5rem;
+    left: 0.8rem;
+    transform: rotate(0);
+    transform-origin: center;
+    transition: 0.2s transform ease;
+}
+.details[open] > .taskStatusTitle:before {
+    transform: rotate(90deg);
+    transition: 0.45s transform ease;
+}
+.details[open] > *:not(.taskStatusTitle) {
+    animation: .1s ease-in-out details-show ;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.details[open] > *:not(.taskStatusTitle) { color: inherit; }
+.taskStatusTitle {
+    border: 4px solid transparent;
+    outline: none;
+    padding: .5rem;
+    display: block;
+    background: #666;
+    color: white;
+    padding-left: 2.2rem;
+    position: relative;
+    cursor: pointer;
+}
+.details[open] .taskStatusTitle,
+.taskStatusTitle:hover {
+    color: #FFCA28;
+    background: #444;
+}
+.content {
+    min-height: 20px;
+    padding: 10px;
+    border-top: none;
+}
+
+
+@keyframes details-show {
+    from {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+  }

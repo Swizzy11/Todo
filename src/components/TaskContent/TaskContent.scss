@@ -1,0 +1,37 @@
+.taskContent {
+    position: relative;
+    height: 50%;
+    font-size: 1.2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    section {
+        width: 95%;
+        text-align: justify;
+        font-size: 1rem;
+    }
+}
+.taskTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.subtasks {
+    width: 90%;
+    height: 80%;
+    color: #888;
+    overflow: hidden;
+    overflow-y: auto;
+    
+    &::-webkit-scrollbar {
+        width: 5px; 
+    }
+    &::-webkit-scrollbar-track {
+        background: #6666667e;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #666666;
+    }
+}

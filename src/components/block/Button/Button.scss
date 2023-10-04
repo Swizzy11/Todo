@@ -1,0 +1,92 @@
+.btn-exit {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    font-size: 15px;
+    font-family: Adventure;
+    color: white;
+    background:none;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 100%;
+    outline: none;
+    text-decoration: none;
+    transition: .1s all;
+    cursor: pointer;
+
+        &:hover {
+            font-size: 2vh;
+            color: rgb(132, 0, 255);
+        }
+}
+.btn-menu {
+    padding: 5px 10px;
+    margin: 10px;
+    outline: none;
+    background: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    color:white;
+    cursor: pointer;
+    font-size: 1.2rem;
+
+        &:hover {
+            border: 1px solid rgb(132, 0, 255);
+            color:rgb(132, 0, 255);
+            box-shadow: 2px 2px 3px 0 rgba(132, 0, 255, 0.5); 
+        }
+}
+
+.btn-menu:hover > a {
+    color:rgb(132, 0, 255);
+}
+
+.btn-add {
+    background: none;
+    border: none;
+    font-size: 2.1vw;
+    color: #888;
+    cursor: pointer;
+}
+
+.btn-sticky {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #888;
+    background-color: #00000000;
+    padding: .5rem;
+    color: white;
+    &:hover {
+        cursor: pointer;
+        background: #44444477;
+    }
+}
+
+.btn-back {
+    border: none;
+    border-bottom: 1px solid #888;
+    background-color: #00000000;
+    padding: .5rem;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background: #44444477;
+    }
+}
+
+.btn-delete {
+    margin-left: 3%;
+    background: none;
+    border: none;
+    color: white;
+    font-family: Adventure;
+    z-index: 2;
+    cursor: pointer;
+
+    &:hover {
+        color: rgb(132, 0, 255);
+    }
+}

@@ -1,0 +1,23 @@
+.defaultInput {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    background-color: #ffffff17;
+    border: none;
+    border-bottom: 1px solid #757575;
+    outline:none;
+    color:#ffffff
+}
+.label {
+    position: absolute;
+    opacity: 0;
+    color: #000000; 
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 20%;
+    top: 40%;
+    transition: 0.2s ease all;
+    color: white;
+} 
+
