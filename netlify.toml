@@ -1,4 +1,4 @@
 [build]
-    command = "serve -s build"
+    command = "npm i -g serve && serve -s build"
     build = "build"
 
