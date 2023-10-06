@@ -3,50 +3,74 @@ $border-color: #5a00a385;
 .project {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 2px;
-    gap: 1%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
 
 .currentTask {
     width: 97%;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-header {
+
+.headerProject {
+    height: 5%;
+    padding: 0 2.5%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.mainProject {
+    width: 100%;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.headerCurrentProject {
     width: 100%;
     height: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-main {
+
+.mainCurrentProject {
     width: 100%;
-    height: 75%;
+    height: 80%;
+}
+
+.projectIndicators {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    font-size: 1.5vw;
 
     span {
         display: flex;
-        justify-content: space-between;
-        border-top: 1px solid gray;
-        border-bottom: 1px solid gray;
+        align-items: center;
+        border: none;
+        
 
-        span {
-            display: flex;
-            align-items: center;
-            border: none;
-            font-size: .8rem;
-
-        }
     }
+
     time {
         margin: 5px;
-        font-size: .8rem;
     }
 }
 
@@ -54,25 +78,82 @@ footer {
     width: 80%;
     height: 20%;
 }
+
 h5 {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 2.5vw;
     text-align: start;
 }
 
+.checkbox-burger:checked ~ .tasksBar {
+    display: flex;
+}
+
+.checkbox-burger {
+    display: none;
+}
+
+.btn-burger {
+    width: 5%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: .3s all;
+
+    
+    &:hover {
+        color: gray;
+    }
+}
+
+.btn-burger-element-1,
+.btn-burger-element-2,
+.btn-burger-element-3 {
+    margin: 1px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.checkbox-burger:checked ~ .btn-burger-element-1 {
+    rotate: 90deg;
+}
 
 
 @media (min-width: 768px) {
-    .project {
-        grid-template-columns: 1fr 2fr;
+    .mainCurrentProject {
+        height: 80%;
+    }
+    footer {
+        height: 15%;
+    }
+} 
+@media (min-width: 992px) {
+    .mainProject {
+        grid-template-columns: 1fr 4fr;
+    }
+    .btn-burger {
+        display: none;
+    }
+    .headerProject {
+        justify-content: end;
+    }
+    .projectIndicators {
+        font-size: .8vw;
+    }
+    h5 {
+        font-size: 1.2vw;
     }
 }
-    
-@media (min-width: 992px) {
-    .project {
-        grid-template-columns: 1fr 4fr;
+@media (min-width: 1200px) {
+    .mainProject {
+        grid-template-columns: 1fr 5fr;
     }
 }
 
-@media (min-width: 1200px) {
-}

@@ -46,7 +46,7 @@ export const Modal:FC<ModalProps> = ({
                 </label>
                 <textarea 
                     className='taskText'
-                    rows={7} 
+                    rows={9} 
                     name='content-task'
                     id='modalTextarea'
                     value={textareaValue}

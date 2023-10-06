@@ -1,9 +1,9 @@
 import { storage } from "../../services/LocalStorage/LocalStorage"
 import { SubtaskData, TaskData } from "../../types/task"
+import { getCurrentTime } from "./getCurrentTime"
 
 export const createTask = (title:string, content: string) => {
     let projectID = storage.get('currentProject')
-    const date = new Date()
 
     projectID = JSON.parse(projectID!)
 
@@ -13,12 +13,11 @@ export const createTask = (title:string, content: string) => {
         status: 'unallocatedTasks',
         title: title,
         content: content,
-        createTime: `${(date.getHours() < 10) ? '0' + date.getHours() : date.getHours()}:${date.getMinutes()}`,
+        createTime: getCurrentTime(),
         closeTime: '',
         subtasks: [],
         comments: []
     }
-
     return newTask
 }
 
@@ -27,14 +26,12 @@ export const createNewSubtask = (
     content: string,
     currentTask: TaskData
 ) => {
-    const date = new Date()
-
     const newSubtask:SubtaskData = {
         id: `${Date.now()}`,
         title: title,
-        status: '',
+        status: 'unallocatedTasks',
         content: content,
-        createTime: `${(date.getHours() < 10) ? '0' + date.getHours() : date.getHours()}:${date.getMinutes()}`,
+        createTime: getCurrentTime(),
         closeTime: '',
         taskID: currentTask.id,
     }

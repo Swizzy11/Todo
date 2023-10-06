@@ -17,6 +17,7 @@
             animation: boxShadowAnimate 3s infinite;
         }
 }
+
 .addProject::before {
     position: relative;
     content: '+';
@@ -27,6 +28,7 @@
     content: '';
     opacity: 0;
 }
+
 .btn-addProject {
     position: absolute;
     padding: 3px;

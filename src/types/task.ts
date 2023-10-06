@@ -20,7 +20,7 @@ export interface CurrentTaskState {
 }
 
 export interface SubtaskState {
-    subtask: any;
+    subtasks: any[];
     loading: boolean;
     error: null | string;
 }
@@ -79,4 +79,9 @@ export interface SubtaskData extends Omit<TaskData, 'projectID' | 'subtasks' | '
     taskID: string
 }  
 
-export type TaskAction = FetchTasksAction | FetchTasksSuccessAction | FetchTasksErrorAction | FetchCurrentTaskSuccessAction | FetchSubtaskSuccessAction | FetchCommentsSuccessAction
+export type TaskAction = FetchTasksAction 
+                        | FetchTasksSuccessAction 
+                        | FetchTasksErrorAction 
+                        | FetchCurrentTaskSuccessAction 
+                        | FetchSubtaskSuccessAction 
+                        | FetchCommentsSuccessAction

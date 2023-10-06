@@ -1,10 +1,13 @@
 .addComments {
+    width: 95%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: end;
     flex-direction: column;
 
     textarea {
+        height: 70%;
         padding: 4px;
         width: 100%;
         resize: none;

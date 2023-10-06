@@ -6,20 +6,18 @@ import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import './TaskContent.scss'
 
 type TaskContentProps = {
-    task: TaskData,
-    currentTask: TaskData
+    task: TaskData
 }
 
 export const TaskContent:FC<TaskContentProps> = ({
-    task,
-    currentTask
+    task
 }) => {
-    const [subtasks, setSubtasks] = useState<Array<SubtaskData>>([])
-    const {subtask} = useTypedSelector(state => state.subtask)
+    const {subtasks} = useTypedSelector(state => state.subtask)
+    const [currentSubtasks, setSubtasks] = useState<Array<SubtaskData>>([])
 
     useEffect(() => {
-        if(subtask !== '' && subtask)  setSubtasks([...subtask])
-    }, [subtask])
+        if(subtasks)  setSubtasks([...subtasks])
+    }, [subtasks])
 
     return (
         <div className='taskContent'>
@@ -30,14 +28,19 @@ export const TaskContent:FC<TaskContentProps> = ({
             </section>
             <div className='subtasks'>
                 <br />
-                <DialogModal dialogClass='' forTask={false} currentTask={currentTask} />
+                <DialogModal 
+                    dialogClass='' 
+                    forTask={false}
+                    inputClass={'subtask'} 
+                    forSubtask={false} 
+                />
                 {
-                        subtasks.map((item, index) => {
-                            return  <SubtaskItem
-                                        currentTask={currentTask}
-                                        key={index}
-                                        data={item}                                                   
-                                    />
+                    currentSubtasks.map((item, index) => {
+                        return  <SubtaskItem
+                                    key={index}
+                                    data={item} 
+                                    inputClass={`${index}`}                                   
+                                />
                     })
                 }
             </div>

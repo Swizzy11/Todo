@@ -1,8 +1,8 @@
+import { getTasksInStorage } from "../../utils/hooks/getTasksInStorage"
 import { storage } from "../LocalStorage/LocalStorage"
 
-
 export const deleteTask = (currentTask:any) => {
-    const tasks = storage.get(`Tasks_${currentTask.projectID}`)!
+    const tasks = getTasksInStorage(currentTask)
 
     for(let i = 0; i < tasks.length; i++) {
         if(tasks[i].id === currentTask.id) {

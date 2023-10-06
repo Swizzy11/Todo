@@ -1,4 +1,3 @@
-
 export interface CommentsState {
     comments: any[];
     loading: boolean;

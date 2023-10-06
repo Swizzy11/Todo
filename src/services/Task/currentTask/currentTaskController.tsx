@@ -9,7 +9,6 @@ import { updateCurrentTask } from "./updateCurrentTask"
 export const currentTaskController = (
     method: string,
     currentTask: TaskData,
-    dispatch?: Dispatch<any>,
     ) => {
             switch(method) {
                 case('add'):
@@ -17,7 +16,7 @@ export const currentTaskController = (
                 case('get'): 
                     return getCurrentTask()
                 case('delete'): 
-                    return deleteCurrentTask(currentTask, dispatch!)
+                    return deleteCurrentTask()
                 case('update'):
                     return updateCurrentTask(currentTask)
                 default:

@@ -24,7 +24,11 @@ export const AddProjectForm:FC<AddProjectFormProps> = ({
         
      }
     return (
-        <form action="_blank" className='addProject' onSubmit={addProject}>
+        <form 
+            action="_blank" 
+            className='addProject' 
+            onSubmit={addProject}
+        >
                 <InputWithButton
                     groupClass=""
                     inputValue={inputValue}

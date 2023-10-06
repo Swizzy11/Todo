@@ -10,21 +10,23 @@
     section {
         width: 95%;
         text-align: justify;
-        font-size: 1rem;
+        font-size: 2.2vw;
     }
 }
+
 .taskTitle {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+
 .subtasks {
     width: 90%;
     height: 80%;
     color: #888;
     overflow: hidden;
     overflow-y: auto;
-    
+
     &::-webkit-scrollbar {
         width: 5px; 
     }
@@ -35,3 +37,13 @@
         background-color: #666666;
     }
 }
+
+@media (min-width: 768px) {}
+@media (min-width: 992px) {
+    .taskContent {
+        section {
+            font-size: 1.2rem;
+        }
+    }
+}
+@media (min-width: 1200px) {}

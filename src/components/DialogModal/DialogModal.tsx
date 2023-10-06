@@ -3,38 +3,60 @@ import { storage } from '../../services/LocalStorage/LocalStorage'
 import { useDispatch } from 'react-redux'
 import { fetchSubtask } from '../../store/action-creator/subtask'
 import { createNewSubtask } from '../../utils/hooks/createTask'
-import { Button } from '../block/Button'
-import  './DialogModal.scss'
 import { statusController } from '../../services/Status/statusController'
-import { TaskData } from '../../types/task'
+import { SubtaskData } from '../../types/task'
+import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
+import  './DialogModal.scss'
 
 type DialogModalProps = {
     forTask: boolean,
     dialogClass: string,
-    currentTask?: TaskData,
+    inputClass: string,
+    forSubtask: boolean,
+    subtask?: SubtaskData
 }
 
 export const DialogModal:FC<DialogModalProps> = ({
     forTask,
     dialogClass,
-    currentTask
+    inputClass,
+    forSubtask,
+    subtask
 }) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const dispatch:Dispatch<any> = useDispatch()
+    const {currentTask} = useTypedSelector(state => state.currentTask)
 
     const createSubtask = () => {
-        const currentTask = storage.get('currentTask')!
-        dispatch(fetchSubtask('add', currentTask, createNewSubtask(title, content, JSON.parse(currentTask))))
+        const currentTask = storage.get('currentTask')
+        if(title !== '' && content !== '') {
+            dispatch(fetchSubtask(
+                                'add', 
+                                currentTask, 
+                                createNewSubtask(title, content, currentTask)
+                            ))
+            setTitle('')
+            setContent('')
+        }
     }
 
     return (
-        <div className={ 'dialogModal' }>            
-                <input type="checkbox" id={`toggle__${dialogClass}`}/>
+        <div className={'dialogModal'}>            
+                <input 
+                    type="checkbox" 
+                    className={`toggle__${dialogClass}`} 
+                    id={`${inputClass}`}
+                />
                 { (!forTask) ? 'Подзадачи' : ''}
-                <label className='checkbox' htmlFor={`toggle__${dialogClass}`}>
-                    { (!forTask) ? '(+)' : '^'}
+
+                <label 
+                    className='checkbox' 
+                    htmlFor={`${inputClass}`}
+                >
+                    { (!forTask) ? <>&nbsp;(+)</> : '^'}
                 </label>
+
                 <dialog className={ dialogClass || 'dialog'}>
                     {
                         (!forTask) 
@@ -53,7 +75,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                                             Текст задачи
                                         </label> 
                                         <textarea 
-                                            className='taskText' 
+                                            className='taskText textarea' 
                                             rows={3} 
                                             name='content-task'
                                             value={content} 
@@ -61,52 +83,79 @@ export const DialogModal:FC<DialogModalProps> = ({
                                         />
                                         <label 
                                             className='btn-checkbox' 
-                                            htmlFor={`toggle__${dialogClass}`}
+                                            htmlFor={`${inputClass}`}
                                             onClick={createSubtask} 
                                         >
                                             Добавить
                                         </label>
                                     </>
                                 :   <>
-                                        <Button 
-                                            type={'button'} 
-                                            classname='btn-delete' 
-                                            onClick={() => {statusController('update', currentTask!, 'inProgress', dispatch)}}
-                                        >
-                                            <label 
-                                                className='btn-checkbox' 
-                                                htmlFor={`toggle__${dialogClass}`}
-                                                onClick={createSubtask} 
-                                            >
-                                                In progress
-                                            </label>
-                                        </Button>
-                                        <Button 
-                                            type={'button'} 
-                                            classname='btn-delete' 
-                                            onClick={() => {statusController('update', currentTask!, 'onReview', dispatch)}}
-                                        >
-                                            <label 
-                                                className='btn-checkbox' 
-                                                htmlFor={`toggle__${dialogClass}`}
-                                                onClick={createSubtask} 
-                                            >
-                                                On review
-                                            </label>
-                                        </Button>
-                                        <Button 
-                                            type={'button'} 
-                                            classname='btn-delete' 
-                                            onClick={() => {statusController('update', currentTask!, 'doneTasks', dispatch)}}
-                                        >
-                                            <label 
+                                        <label 
                                             className='btn-checkbox' 
-                                            htmlFor={`toggle__${dialogClass}`}
-                                            onClick={createSubtask} 
-                                            >
-                                                Done
-                                            </label>
-                                        </Button>
+                                            htmlFor={`${inputClass}`}
+                                            onClick={() => {
+                                                (forSubtask)
+                                                ? dispatch(fetchSubtask(
+                                                                        'update', 
+                                                                        currentTask, 
+                                                                        subtask, 
+                                                                        'inProgress', 
+                                                                        dispatch
+                                                                    ))
+                                                : statusController(
+                                                                    'update',
+                                                                        currentTask!, 
+                                                                        'inProgress', 
+                                                                        dispatch
+                                                                    )
+                                            }}
+                                        >
+                                            In progress
+                                        </label>
+                                        <label 
+                                            className='btn-checkbox' 
+                                            htmlFor={`${inputClass}`}
+                                            onClick={() => {
+                                                (forSubtask)
+                                                ? dispatch(fetchSubtask(
+                                                                        'update', 
+                                                                        currentTask, 
+                                                                        subtask, 
+                                                                        'onReview',
+                                                                        dispatch
+                                                                    ))
+                                                : statusController(
+                                                                    'update', 
+                                                                    currentTask!, 
+                                                                    'onReview', 
+                                                                    dispatch
+                                                                )
+                                            }}
+                                        >
+                                            On review
+                                        </label>
+                                        <label 
+                                            className='btn-checkbox' 
+                                            htmlFor={`${inputClass}`}
+                                            onClick={() => {
+                                               (forSubtask) 
+                                               ? dispatch(fetchSubtask(
+                                                                        'update', 
+                                                                        currentTask, 
+                                                                        subtask, 
+                                                                        'done', 
+                                                                        dispatch
+                                                                    ))
+                                               : statusController(
+                                                                    'update', 
+                                                                    currentTask!, 
+                                                                    'doneTasks', 
+                                                                    dispatch
+                                                                )
+                                            }}
+                                        >
+                                            Done
+                                        </label>
                                     </>
                     }
                     

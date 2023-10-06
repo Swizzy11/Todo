@@ -1,8 +1,8 @@
 import { TaskData } from "../../../types/task"
-import { storage } from "../../LocalStorage/LocalStorage"
+import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage"
 
 export const getSubtasks = (currentTask: TaskData) => {
-    const tasks = storage.get(`Tasks_${currentTask.projectID}`)!
+    const tasks = getTasksInStorage(currentTask)
     
     for(let i = 0; i < tasks.length; i++ ) {
         if(currentTask.id === tasks[i].id) {

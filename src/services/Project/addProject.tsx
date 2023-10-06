@@ -14,11 +14,7 @@ export const addProject = (
                             title={title} 
                             key={key} 
 
-                            onClick={
-                                () => {
-                                    return key
-                                }
-                            } 
+                            onClick={() => {return key}} 
 
                             onDeleteProject={
                                 (e) => {
@@ -39,7 +35,7 @@ export const addProject = (
             title: title
         }
 
-        storage.set(`Project_${key}`, JSON.stringify(projectInfo))
+        storage.set(`Project_${key}`, projectInfo)
         setProject([...projects, project])
 
         return projects

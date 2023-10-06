@@ -46,7 +46,7 @@ class LocalStorage implements LocalStorageMethods {
             }
         }
 
-        return items.map((item) => JSON.parse(item))
+        return items.map((item) => item)
     }
 
     set(key:string, value:any) {

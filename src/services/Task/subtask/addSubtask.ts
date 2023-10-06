@@ -1,22 +1,26 @@
 import { SubtaskData, TaskData } from "../../../types/task"
+import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage"
 import { storage } from "../../LocalStorage/LocalStorage"
 
 export const addSubtask = (
-    currentTask: any,
+    currentTask: TaskData,
     subtask: SubtaskData,
-    ) => {
-        const tasks:Array<TaskData> = storage.get(`Tasks_${JSON.parse(currentTask).projectID}`)!
-        
+    ) => { 
+        const tasks = getTasksInStorage(currentTask)
+      
         for(let i = 0; i < tasks.length; i++ ) {
-            if(JSON.parse(currentTask).id === tasks[i].id) {  
+
+            if(currentTask.id === tasks[i].id) { 
+
                 if(tasks[i].subtasks) {
                     tasks[i].subtasks.push(subtask)
                 }else {
                     tasks[i].subtasks = [subtask]
                 }
                 
-                storage.set(`Tasks_${JSON.parse(currentTask).projectID}`, tasks)
-
+                storage.set(`Tasks_${currentTask.projectID}`, tasks)
+                storage.set('currentTask', tasks[i])
+                
                 return tasks[i].subtasks
             }
         }

@@ -1,9 +1,10 @@
 import { SubtaskData, TaskData } from "../../../types/task"
+import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage";
 import { storage } from "../../LocalStorage/LocalStorage"
 
 
 export const deleteSubtask = (currentTask:TaskData, subtask:SubtaskData ) => {
-    const tasks:Array<TaskData> = storage.get(`Tasks_${currentTask.projectID}`)!
+    const tasks = getTasksInStorage(currentTask)
     let subtasks:Array<SubtaskData> = [];
     
     for(let i=0; i < tasks.length; i++) {
@@ -13,7 +14,6 @@ export const deleteSubtask = (currentTask:TaskData, subtask:SubtaskData ) => {
     }
 
     for(let i = 0; i < subtasks.length; i++) {
-        console.log(subtasks[i].id === subtask.id)
         if(subtasks[i].id === subtask.id) {
             subtasks.splice(i, 1) 
         }

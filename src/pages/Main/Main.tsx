@@ -1,8 +1,8 @@
+import { useDispatch } from 'react-redux'
 import { Dispatch, ReactNode, useEffect, useState } from 'react'
 import { AddProjectForm } from '../../components/forms/AddProjectForm'
 import { BackgroundAnimation } from '../../components/BackgroundAnimation'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
-import { useDispatch } from 'react-redux'
 import { fetchProjects } from '../../store/action-creator/project'
 import { Loader } from '../../components/Loader'
 import  './Main.scss'
@@ -16,7 +16,6 @@ export const Main = () => {
         setProjects([])
         dispatch(fetchProjects(setProjects))
     }, [])
-    
 
     return (
         <div className='main'>

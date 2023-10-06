@@ -7,27 +7,35 @@ import { fetchSubtask } from '../../../store/action-creator/subtask'
 import { Button } from '../Button'
 import { fetchTasks } from '../../../store/action-creator/task'
 import { fetchComment } from '../../../store/action-creator/comment'
+import { onDragOver, onDragStart, onDrop } from '../../../utils/hooks/dragNdrop'
 import './DropDownItem.scss'
 
 type DropDownItemProps = {
     tasks: TaskData[],
     title: string,
-    className: string
+    className: string,
 }
 
 export const DropDownItem:FC<DropDownItemProps> = ({
     tasks,
     title,
-    className
+    className,
+
 }) => {
     const dispatch:Dispatch<any> = useDispatch()
 
+    
   return (
-    <details className={`details ${className}`}>
+            <details className={`details ${className}`}>
                 <summary className='taskStatusTitle'>
                     {title}
                 </summary>
-                <ul className="content" >
+
+                <ul 
+                    className={`content content_${className}`} 
+                    onDragOver={(e) => onDragOver(e, dispatch)}
+                    onDrop={(e) =>onDrop(e)}
+                >
                     { 
                         tasks.map((item, index) => {
                             if(className === item.status) {
@@ -40,9 +48,12 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                                     dispatch(fetchTasks('delete', item))
                                     dispatch(fetchCurrentTask('delete', item))
                                 }
-                                return <li 
+                                return <li  
+                                            id={`${index}`}
                                             className='task'
                                             key={index}
+                                            draggable={true}
+                                            onDragStart={onDragStart}
                                         >
                                             <span onClick={addCurrentTask}>{item.title}</span>
                                             <Button 
@@ -64,6 +75,6 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                         : <></>
                     }
                 </ul>
-        </details>
+            </details>
   )
 }

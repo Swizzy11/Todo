@@ -9,7 +9,8 @@ export const fetchCurrentTask = (
     ) => {
     return async (dispatch: Dispatch<TaskAction>) => {
         try {
-            const response = currentTaskController(method, currentTask!, dispatch)
+            const response = currentTaskController(method, currentTask!)
+            
             dispatch({type: TaskActionTypes.FETCH_CURRENT_TASKS_SUCCESS, payload: response!})
         } catch (e) {
             dispatch({type: TaskActionTypes.FETCH_TASKS_ERROR, payload: 'Произошла ошибка при загрузке задачи'})

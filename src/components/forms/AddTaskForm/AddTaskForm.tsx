@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { fetchTasks } from "../../../store/action-creator/task"
 import { Modal } from "../../Modal"
 import { fetchCurrentTask } from "../../../store/action-creator/currentTask"
+import { fetchSubtask } from "../../../store/action-creator/subtask"
 import './AddTaskForm.scss'
 
 export const AddTaskForm:FC = () => {
@@ -14,8 +15,17 @@ export const AddTaskForm:FC = () => {
 
     const addTask:ReactEventHandler = () => {
         if(inputValue !== '') {
-            dispatch(fetchTasks('add', createTask(inputValue, textareaValue)))
-            dispatch(fetchCurrentTask('add', createTask(inputValue, textareaValue)))
+            dispatch(fetchTasks(
+                                'add', 
+                                createTask(inputValue, textareaValue)
+                            ))
+            dispatch(fetchCurrentTask(
+                                        'add', 
+                                        createTask(inputValue, textareaValue)
+                                    ))
+
+            dispatch(fetchSubtask('update'))
+
             setInputValue('');
             setTextareaValue('')
         }else {
@@ -26,9 +36,13 @@ export const AddTaskForm:FC = () => {
         <form>
             <Modal 
                 inputValue={inputValue}
-                onChangeInput={(e) => setInputValue(e.currentTarget.value)}
+                onChangeInput={
+                                (e) => setInputValue(e.currentTarget.value)
+                            }
                 textareaValue={textareaValue}
-                onChangeTextarea={(e) => setTextareaValue(e.currentTarget.value)}
+                onChangeTextarea={
+                                    (e) => setTextareaValue(e.currentTarget.value)
+                                }
                 onClick={addTask}
             />
         </form>

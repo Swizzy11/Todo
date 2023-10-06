@@ -18,13 +18,24 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
 
     const addComment:React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
-        dispatch(fetchComment('add', currentTask, createComment(currentTask, commentValue)))
+        if(commentValue === '') return
+        
+        dispatch(fetchComment(
+                                'add',
+                                currentTask, 
+                                createComment(currentTask, commentValue)
+                            ))
+        setNewComment('')
     }
 
     return (
-        <form action="" className='addComments' onSubmit={addComment}>
-            <textarea 
-                rows={8} 
+        <form 
+            action="" 
+            className='addComments' 
+            onSubmit={addComment}
+        >
+            <textarea
+                rows={5} 
                 placeholder='Ваш комментарий...'
                 value={commentValue} 
                 onChange={(e) => setNewComment(e.currentTarget.value)}
