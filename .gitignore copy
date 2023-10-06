@@ -1,6 +1,0 @@
-.vscode
-.module-cache
-
-/node_modules
-*.lock
-dist/
