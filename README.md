@@ -11,4 +11,4 @@
 > JS, HTML
 
 > Ссылка на хостинг:
-> TODO
+> [TODO](https://merry-travesseiro-53c1c6.netlify.app/)
