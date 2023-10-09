@@ -151,8 +151,7 @@ export const TaskContent:FC<TaskContentProps> = ({
                     currentSubtasks.map((item, index) => {
                         return  <SubtaskItem
                                     key={index}
-                                    data={item} 
-                                    inputClass={`${index}`}                                   
+                                    data={item}                                 
                                 />
                     })
                 }

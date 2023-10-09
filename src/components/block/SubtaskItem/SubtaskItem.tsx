@@ -9,14 +9,12 @@ import './SubtaskItem.scss'
 
 type SubtaskItemProps = {
     key: string | number,
-    data: SubtaskData,
-    inputClass: string
+    data: SubtaskData
 }
 
 export const SubtaskItem:FC<SubtaskItemProps> = ({
     key,
-    data,
-    inputClass
+    data
 }) => {
     const dispatch:Dispatch<any> = useDispatch()
     const {currentTask} = useTypedSelector(state => state.currentTask)
@@ -26,7 +24,7 @@ export const SubtaskItem:FC<SubtaskItemProps> = ({
                 <span>Задача: {data.title} | Статус
                     <DialogModal 
                         dialogClass={'dialogForStatusBar__subtask'}
-                        inputClass={inputClass} 
+                        inputClass={data.id} 
                         forSubtask={true}
                         subtask={data}                            
                     /> &nbsp;&nbsp;
