@@ -1,11 +1,11 @@
 import { FC } from 'react'
-import './Files.scss'
+import './FilesItem.scss'
 
-type FilesProps = {
+type FilesItemProps = {
     fileName: string,
 }
 
-export const Files:FC<FilesProps> = ({
+export const FilesItem:FC<FilesItemProps> = ({
     fileName
 }) => {
     return (

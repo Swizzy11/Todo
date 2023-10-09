@@ -8,7 +8,7 @@ import { fetchSubtask } from '../../store/action-creator/subtask'
 import { createNewSubtask } from '../../utils/hooks/createTask'
 import { Button } from '../block/Button'
 import { fetchCurrentTask } from '../../store/action-creator/currentTask'
-import { Files } from '../block/Files'
+import { FilesItem } from '../block/Files'
 import { filePiker } from '../../utils/hooks/filePicker'
 import './TaskContent.scss'
 
@@ -99,7 +99,8 @@ export const TaskContent:FC<TaskContentProps> = ({
                                 {
                                     task.files.map((item) => {
                                         return (
-                                        <Files fileName={item} />)
+                                            <FilesItem fileName={item} />
+                                        )
                                     })
                                 }
                             </div>
