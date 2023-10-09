@@ -74,30 +74,24 @@ $purple: rgb(132, 0, 255);
 }
 
 .dialogForStatusBar {
-    left: .5vw;
-    width: 12vh;
-    height: 12vh;
+    position: absolute;
+    margin-left: 3vw;
     display: none;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    border: 1px solid gray;
+    border: none;
+    justify-content: start;
     border-radius: 15px 15px 15px 0px;
-    background-color: rgba(0, 0, 0, 0.9);
-    animation: underApper 150ms ease-in 1;
+    background-color: rgba(0, 0, 0, 0);
+    animation: leftApper 150ms ease-in 1;
 
     .btn-delete {
         width: 100%;
     }
-
 }
-.dialogForStatusBar,
-    .dialogForPriority {
-        top: -1350%;
-    }
+
 .dialogForStatusBar__subtask {
     position: absolute;
     width: 32vw;
+    height: 2vh;
     margin-left: 1vw;
     font-size: 2vw;
     display: none;
@@ -105,24 +99,21 @@ $purple: rgb(132, 0, 255);
     background-color: rgba(0, 0, 0, 0);
     animation: leftApper 150ms ease-in 1;
 }
+
 .dialogForPriority {
-    left: .5vw;
-    width: 5vh;
-    height: 12vh;
+    position: absolute;
+    margin-left: 1vw;
     display: none;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    border: 1px solid gray;
+    border: none;
     border-radius: 15px 15px 15px 0px;
-    background-color: rgba(0, 0, 0, 0.9);
-    animation: underApper 150ms ease-in 1;
+    background-color: rgba(0, 0, 0, 0);
+    animation: leftApper 150ms ease-in 1;
 
     .btn-checkbox {
-        border: 1px solid rgba(0, 0, 0, 0);
-        border-radius: 0;
-        border-bottom: 1px solid white;
-
+        margin: 0% 20%;
+        border: 1px solid white;
+        border-radius: 4px;
+        
             &:hover {
                 border: 1px solid rgba(0, 0, 0, 0);
                 border-bottom: 1px solid $purple;
@@ -156,8 +147,8 @@ $purple: rgb(132, 0, 255);
 }
 
 .btn-checkbox {
+    margin: 0 2%;
     padding: 2px;
-    margin-left: 2%;
     outline: none;
     background-color: black;
     color:white;
@@ -210,11 +201,6 @@ $purple: rgb(132, 0, 255);
         font-size: 1vw;
     }
 
-    .dialogForStatusBar,
-    .dialogForPriority {
-        top: -1110%;
-    }
-
     .taskText {
         font-size: 1.4vw;
     }
@@ -234,12 +220,6 @@ $purple: rgb(132, 0, 255);
         width: 34%;
         height: 23%;
         font-size: 1.2vh;
-    }
-
-    .dialogForStatusBar {
-        left: 5vw;
-        width: 12vh;
-        height: 12vh;
     }
 
     .dialogForStatusBar__subtask {
@@ -280,8 +260,5 @@ $purple: rgb(132, 0, 255);
     .checkbox {
         font-size: 1.5vh;
     }
-    .dialogForStatusBar,
-    .dialogForPriority {
-        top: -660%;
-    }
+    
 }

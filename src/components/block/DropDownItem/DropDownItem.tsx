@@ -27,7 +27,7 @@ export const DropDownItem:FC<DropDownItemProps> = ({
 
     
   return (
-            <details className={`details ${className}`}>
+            <details className={`details details_${className}`}>
                 <summary className='taskStatusTitle'>
                     {title}
                 </summary>

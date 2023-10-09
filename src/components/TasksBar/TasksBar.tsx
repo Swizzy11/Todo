@@ -27,7 +27,7 @@ export const TasksBar = () => {
             <Search></Search>
               <DropDownItem
                     tasks={taskList}
-                    className={'unallocatedTasks'}
+                    className={'empty'}
                     title={'Tasks'}
                   />
               <DropDownItem
