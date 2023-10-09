@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import './Files.scss'
 
 type FilesProps = {
     fileName: string,
