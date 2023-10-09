@@ -50,7 +50,6 @@
 .details[open] > *:not(.taskStatusTitle) {
     animation: .1s ease-in-out details-show ;
     position: relative;
-    z-index: 1;
     overflow: hidden;
 }
 .details[open] > *:not(.taskStatusTitle) { color: inherit; }
