@@ -36,7 +36,7 @@ export const updateStatus = (currentTask:TaskData, status:string, dispatch:Dispa
             storage.set(`Tasks_${currentTask.projectID}`, tasks)
 
             dispatch(fetchTasks('update', tasks[i], tasks, tasks[i].projectID))
-            dispatch(fetchCurrentTask('update', tasks[i]))
+            dispatch(fetchCurrentTask('update', tasks[i], dispatch))
 
             return status
         }

@@ -13,7 +13,7 @@ export const updateSubtask = (
     status: string, 
     dispatch?: Dispatch<any>
     ) => {
-        if(status === 'inProgress' || status === 'done' || status === 'onReview') {
+        if(status === 'queue' || status === 'done' || status === 'development') {
 
             const tasks = getTasksInStorage(currentTask)
             const subtasks:Array<SubtaskData> = storage.get('currentTask').subtasks
@@ -38,8 +38,8 @@ export const updateSubtask = (
                     storage.set(`Tasks_${currentTask.projectID}`, tasks)
 
                     dispatch!(fetchTasks('update', tasks[i], tasks, currentTask.projectID))
-                    dispatch!(fetchCurrentTask('update', currentTask))
-
+                    dispatch!(fetchCurrentTask('update', currentTask, dispatch))
+                    
                     return subtasks
                 }
             }   

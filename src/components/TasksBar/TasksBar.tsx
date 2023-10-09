@@ -32,13 +32,13 @@ export const TasksBar = () => {
                   />
               <DropDownItem
                     tasks={taskList}
-                    className={'inProgress'}
-                    title={'In progress'}
+                    className={'queue'}
+                    title={'Queue'}
                     />
               <DropDownItem
                     tasks={taskList}
-                    className={'onReview'}
-                    title={'On review'}
+                    className={'development'}
+                    title={'Development'}
                 />
               <DropDownItem
                     tasks={taskList}

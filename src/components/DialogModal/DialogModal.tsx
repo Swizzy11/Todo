@@ -59,7 +59,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                             statusController(
                                 'update',
                                 currentTask!, 
-                                'inProgress', 
+                                'queue', 
                                 dispatch
                             )
                         : (!forPriority) 
@@ -68,7 +68,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                                 'update', 
                                 currentTask, 
                                 subtask, 
-                                'inProgress', 
+                                'queue', 
                                 dispatch
                             ))
                         :
@@ -81,7 +81,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                         )                      
                     }}
                 >
-                   {(forPriority) ? '1': 'In progress'} 
+                   {(forPriority) ? '1': 'Queue'} 
                 </label>
                 <label 
                     className='btn-checkbox' 
@@ -92,7 +92,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                             statusController(
                                 'update', 
                                 currentTask!, 
-                                'onReview', 
+                                'development', 
                                 dispatch
                             )
                         : (!forPriority) 
@@ -101,7 +101,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                                 'update', 
                                 currentTask, 
                                 subtask, 
-                                'onReview',
+                                'development',
                                 dispatch
                             ))
                             
@@ -114,7 +114,7 @@ export const DialogModal:FC<DialogModalProps> = ({
                         )  
                     }}
                 >
-                    {(forPriority) ? '2': 'On review'}
+                    {(forPriority) ? '2': 'Development'}
                 </label>
                 <label 
                     className='btn-checkbox' 

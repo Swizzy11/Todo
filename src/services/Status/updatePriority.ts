@@ -21,7 +21,7 @@ export const updatePriority = (currentTask:TaskData, priority:string, dispatch:D
             storage.set(`Tasks_${currentTask.projectID}`, tasks)
 
             dispatch(fetchTasks('update', tasks[i], tasks, tasks[i].projectID))
-            dispatch(fetchCurrentTask('update', tasks[i]))
+            dispatch(fetchCurrentTask('update', tasks[i], dispatch))
 
             return priority
         }
