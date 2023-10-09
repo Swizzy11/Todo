@@ -34,7 +34,7 @@ export const CommentItem:FC<CommentItemProps> = ({
                         createComment(
                             currentTask, 
                             textareaValue, 
-                            data?.commentID!
+                            data!.id
                         )
                     )
                 )  
@@ -43,8 +43,7 @@ export const CommentItem:FC<CommentItemProps> = ({
         dispatch(fetchSubcomment('get', data))
     }, [])
 
-    useEffect(() => {
-        
+    useEffect(() => {     
         setSubcomment([...subcomments])
     }, [subcomments])
 
@@ -70,7 +69,7 @@ export const CommentItem:FC<CommentItemProps> = ({
                             forSubtask={false} 
                             subtaskModalClass={""} 
                             forComments={true}
-                            subcommentsClass={`comment`}
+                            subcommentsClass={`${data!.id}`}
                             onChangeTextarea={(e) => setTextareaValue(e.currentTarget.value)}
                             onClick={addSubcomment}
                         />
@@ -82,7 +81,7 @@ export const CommentItem:FC<CommentItemProps> = ({
                         dispatch(fetchSubcomment('delete', data, item))
                     }
                     return (
-                        (item.commentID === data!.commentID)
+                        (item.commentID === data!.id)
                             ?
                                 <Subcomment
                                     data={item}

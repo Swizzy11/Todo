@@ -26,8 +26,9 @@ export const Subcomment:FC<SubcommentType> = ({
     const dispatch:Dispatch<any> = useDispatch()
 
     const addSubcomments = () => {
-
+        
         if(textareaValue !== '') {
+            setTextareaValue('')
             const newComment = createComment(
                                     currentTask, 
                                     textareaValue, 
@@ -36,7 +37,7 @@ export const Subcomment:FC<SubcommentType> = ({
 
             dispatch(fetchSubcomment('add', data, newComment))
 
-            setTextareaValue('')
+            
         }else {
             console.log('Введите название')
         }
