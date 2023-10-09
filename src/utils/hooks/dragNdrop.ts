@@ -5,7 +5,7 @@ import { statusController } from "../../services/Status/statusController";
 export const onDragOver = (
     event: React.DragEvent<HTMLUListElement>, 
     dispatch:Dispatch<any>
-    ) => {
+) => {
     event.preventDefault()
     onUpdateTaskStatus(event, dispatch)
   }
@@ -35,7 +35,7 @@ export const onDragStart = (event: React.DragEvent<HTMLLIElement>) => {
 const onUpdateTaskStatus = (
     event: React.DragEvent<HTMLUListElement>, 
     dispatch:Dispatch<any>
-    ) => {
+) => {
     const currentTask = storage.get('currentTask')
 
     if(event.currentTarget.classList[1] === 'content_inProgress') {

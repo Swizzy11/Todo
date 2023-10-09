@@ -23,7 +23,7 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
         dispatch(fetchComment(
                                 'add',
                                 currentTask, 
-                                createComment(currentTask, commentValue)
+                                createComment(currentTask, commentValue, `${Date.now()}`)
                             ))
         setNewComment('')
     }
@@ -38,7 +38,9 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
                 rows={5} 
                 placeholder='Ваш комментарий...'
                 value={commentValue} 
-                onChange={(e) => setNewComment(e.currentTarget.value)}
+                onChange={(e) => 
+                        setNewComment(e.currentTarget.value)
+                    }
             >
             </textarea>
             <Button classname='btn-back' type={'submit'}>

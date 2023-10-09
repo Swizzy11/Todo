@@ -1,3 +1,5 @@
+$purple: rgb(132, 0, 255);
+
 .modal {
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@
     align-items: center;
 
     label {
-        color:white
+        color:white;
     }
 }
 
@@ -16,14 +18,29 @@
     text-align: start;
 }
 
-#modalToggle { 
+#modalToggle,
+#modalToggleSubtask,
+.modalToggleComment { 
     visibility: hidden;
     opacity: 0;
     position: relative;
     z-index: -1;
+    display: none;
 }
-
-#modalToggle:checked ~ .backgroundModal {
+.modalToggleComment:checked ~ .backgroundModalComment {
+    animation-name: showTranslate;
+    animation-duration: .45s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+}
+.modalToggleComment:not(:checked) ~ .backgroundModalComment {
+    display: none;
+}
+#modalToggle:checked ~ .backgroundModal,
+#modalToggleSubtask:checked ~ .backgroundModal {
     animation-name: showTranslate;
     animation-duration: .45s;
     animation-iteration-count: 1;
@@ -33,7 +50,8 @@
     animation-delay: 0s;
 }
 
-#modalToggle:not(:checked) ~ .backgroundModal {
+#modalToggle:not(:checked) ~ .backgroundModal,
+#modalToggleSubtask:not(:checked) ~ .backgroundModal {
     display: none;
 }
 
@@ -47,7 +65,7 @@
     justify-content: center;
     align-items: center;
     background-color: black;
-    z-index: 3;
+    z-index: 999;
 
     &:target {
         opacity: 1;
@@ -56,10 +74,11 @@
 
     &__content {
         width: 80%;
-        height: 20%;
+        min-width: 25vw;
+        max-width: 50vw;
         padding: 1%;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         flex-direction: column;
         background-color: black;
@@ -84,9 +103,63 @@
         width: 85%;
         text-align: center;
     }
+}
 
-    * {
-        margin: 1%;
+.backgroundModalComment {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    z-index: 9999;
+    &:target {
+        visibility: visible;
+    }
+
+    &__content {
+        width: 80%;
+        min-width: 25vw;
+        max-width: 50vw;
+        height: 28vw;
+        padding: 1%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        background-color: black;
+        font-size: 2vw;
+        box-shadow: 0px 0px 25px 0px rgba(114, 76, 185, 0.69);
+        border-radius: 15px;
+    }
+
+    input {
+        font-size: 3vw;
+        padding: .4rem .2rem;
+    }
+
+    textarea {
+        font-size: 1.3vw;
+        padding: 2%;
+        height: 30%;
+        width: 88%;
+        height: 58%;
+        color: white;
+        background-color: rgb(46, 46, 46);
+        resize: none;
+        outline: none;
+        border:none;
+        border-radius: 4px;
+    }
+
+    .btn-checkbox {
+        margin-top: 2%;
+        padding: .2rem 2.5%;
+        width: 85%;
+        text-align: center;
     }
 }
 
@@ -110,11 +183,27 @@
         transform: translateY(0%);
     }
 }
+.label-checkbox {
+    background: none;
+    color: white;
+    font-size: 1.5vh;
+    border-radius: 4px;
+    transition: .5s all;
+    cursor: pointer;
 
+    &:hover {
+        color:$purple;
+    }
+}
 
-@media (min-width: 768px) {} 
+@media (min-width: 768px) {
+    .label-checkbox {
+        font-size: 2vh;
+    }
+} 
 @media (min-width: 992px) {
-    .backgroundModal {
+    .backgroundModal,
+    .backgroundModalComment {
         &__content {
             width: 40%;
             height: 35%;
@@ -129,12 +218,16 @@
     .modalLabel {
         font-size: 1rem;
     }
+
+    .label-checkbox {
+        font-size: 1.2vw;
+    }
 }
 @media (min-width: 1200px) {
     .backgroundModal {
 
         &__content {
-            height: 35%;
+            height: 36%;
             width: 30%;
         }
 
@@ -149,5 +242,23 @@
         .btn-checkbox {
             font-size: 1vw;
         }
+    }
+
+    .backgroundModalComment {
+        &__content {
+            height: 32%;
+            width: 30%;
+        }
+        textarea {
+            font-size: 1vw;
+            height: 50%;
+        }
+        .btn-checkbox {
+            font-size: 1vw;
+        }
+    }
+
+    .label-checkbox {
+        font-size: 2vh;
     }
 }

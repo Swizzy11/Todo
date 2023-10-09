@@ -15,7 +15,9 @@ export const getTasks = () => {
             createTime: "",
             closeTime: "",
             subtasks: [],
-            comments: []
+            number: "",
+            priority: "",
+            files: []
         }
         storage.set(`Tasks_${currentProject}`, [newTask])
         return [newTask] 

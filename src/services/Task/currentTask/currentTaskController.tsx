@@ -9,16 +9,17 @@ import { updateCurrentTask } from "./updateCurrentTask"
 export const currentTaskController = (
     method: string,
     currentTask: TaskData,
+    dispatch?: Dispatch<any>
     ) => {
             switch(method) {
                 case('add'):
                     return addCurrentTask(currentTask)
                 case('get'): 
                     return getCurrentTask()
+                case('update'):
+                    return updateCurrentTask(currentTask, dispatch!)
                 case('delete'): 
                     return deleteCurrentTask()
-                case('update'):
-                    return updateCurrentTask(currentTask)
                 default:
                     return [<>Что то пошло не так</>]
             }  

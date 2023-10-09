@@ -5,7 +5,7 @@
     border: none;
     border-bottom: 1px solid #757575;
     outline:none;
-    color:#ffffff
+    color:#ffffff;
 }
 .label {
     position: absolute;
@@ -21,3 +21,36 @@
     color: white;
 } 
 
+.inputSearch {
+    width: 98%;
+    font-size: 1.2vh;
+    padding: 1vh 0px 1vh 2%;
+    background-color: #ffffff17;
+    border: none;
+    border-bottom: 1px solid #757575;
+    outline:none;
+    color:#ffffff;
+    position: relative;
+}
+
+
+@media (min-width: 768px) {
+    .inputSearch {
+        width: 98%;
+        font-size: 1.5vw;
+        padding: 1.5% 0 1.5% 2%;
+    }
+}
+    
+@media (min-width: 992px) {
+    .inputSearch {
+        font-size: 1.2vw;
+        padding: 3% 0 3% 2%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .inputSearch {
+        font-size: .8vw;
+    }
+}

@@ -8,6 +8,7 @@ import { Button } from '../Button'
 import { fetchTasks } from '../../../store/action-creator/task'
 import { fetchComment } from '../../../store/action-creator/comment'
 import { onDragOver, onDragStart, onDrop } from '../../../utils/hooks/dragNdrop'
+import { fetchSubcomment } from '../../../store/action-creator/subcomments'
 import './DropDownItem.scss'
 
 type DropDownItemProps = {
@@ -43,6 +44,7 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                                     dispatch(fetchCurrentTask('add', item))
                                     dispatch(fetchSubtask('get', item))
                                     dispatch(fetchComment('get', item))
+                                    dispatch(fetchSubcomment('get'))
                                 }
                                 const deleteTask = () => {
                                     dispatch(fetchTasks('delete', item))

@@ -9,14 +9,16 @@ export const getCurrentTask = () => {
     if(!currentTask) {
         currentTask = {
             id: '',
+            priority: '',
+            files: [],
+            number: '',
             status: '',
             projectID: '',
             title: '',
             content: '',
             createTime: '',
             closeTime: '',
-            subtasks: [],
-            comments: []
+            subtasks: []
         }
        currentTaskController('add', currentTask)
     }

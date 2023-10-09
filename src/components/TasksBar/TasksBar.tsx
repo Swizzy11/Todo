@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { fetchTasks } from '../../store/action-creator/task'
 import { TaskData } from '../../types/task'
 import { createTask } from '../../utils/hooks/createTask'
+import { Search } from '../Search'
 import './TasksBar.scss'
 
 export const TasksBar = () => {
@@ -22,8 +23,8 @@ export const TasksBar = () => {
     
       
   return (
-
       <div className="tasksBar">
+            <Search></Search>
               <DropDownItem
                     tasks={taskList}
                     className={'unallocatedTasks'}

@@ -15,15 +15,8 @@ export const AddTaskForm:FC = () => {
 
     const addTask:ReactEventHandler = () => {
         if(inputValue !== '') {
-            dispatch(fetchTasks(
-                                'add', 
-                                createTask(inputValue, textareaValue)
-                            ))
-            dispatch(fetchCurrentTask(
-                                        'add', 
-                                        createTask(inputValue, textareaValue)
-                                    ))
-
+            dispatch(fetchTasks('add', createTask(inputValue, textareaValue)))
+            dispatch(fetchCurrentTask('add',createTask(inputValue, textareaValue)))
             dispatch(fetchSubtask('update'))
 
             setInputValue('');
@@ -32,6 +25,7 @@ export const AddTaskForm:FC = () => {
             console.log('Введите название')
         }
     }
+    
     return (
         <form>
             <Modal 
@@ -39,11 +33,16 @@ export const AddTaskForm:FC = () => {
                 onChangeInput={
                                 (e) => setInputValue(e.currentTarget.value)
                             }
+                            
                 textareaValue={textareaValue}
                 onChangeTextarea={
                                     (e) => setTextareaValue(e.currentTarget.value)
                                 }
+
                 onClick={addTask}
+                forSubtask={false}
+                subtaskModalClass=""
+                forComments={false} 
             />
         </form>
     )

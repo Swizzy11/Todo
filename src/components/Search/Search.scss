@@ -1,0 +1,18 @@
+.search {
+    width: 90%;
+    margin-bottom: 1%;
+}
+
+@media (min-width: 768px) {
+    .search {
+        margin-bottom: 1%;
+    }
+}
+    
+@media (min-width: 992px) {
+    .search {
+        margin-bottom: 2%;
+    }
+}
+
+@media (min-width: 1200px) {}

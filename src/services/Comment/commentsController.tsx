@@ -1,7 +1,7 @@
 import { CommentData } from "../../types/comment"
 import { TaskData } from "../../types/task"
 import { addComment } from "./addComment"
-import { deleteComments } from "./deleteComments"
+import { deleteComments } from "./deleteComment"
 import { getComments } from "./getComments"
 
 
@@ -16,7 +16,7 @@ export const commentsController = (
                 case('get'): 
                     return getComments(currentTask)
                 case('delete'): 
-                    return deleteComments(currentTask)
+                    return deleteComments(currentTask, comment!)
                 default:
                     return [<>Что то пошло не так</>]
             }  

@@ -25,7 +25,6 @@ export const SubtaskItem:FC<SubtaskItemProps> = ({
             <span>
                 <span>Задача: {data.title} | Статус
                     <DialogModal 
-                        forTask={true}
                         dialogClass={'dialogForStatusBar__subtask'}
                         inputClass={inputClass} 
                         forSubtask={true}
@@ -36,7 +35,9 @@ export const SubtaskItem:FC<SubtaskItemProps> = ({
                     <Button 
                         type={'button'} 
                         classname='btn-delete'
-                        onClick={()=>dispatch(fetchSubtask('delete', currentTask, data))}
+                        onClick={() => 
+                                dispatch(fetchSubtask('delete', currentTask, data))
+                            }
                     >
                         Delete
                         </Button>

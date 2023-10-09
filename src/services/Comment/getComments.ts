@@ -1,12 +1,10 @@
+import { CommentData } from "../../types/comment";
 import { TaskData } from "../../types/task";
-import { getTasksInStorage } from "../../utils/hooks/getTasksInStorage";
+import { storage } from "../LocalStorage/LocalStorage";
 
 export const getComments = (currentTask:TaskData) => {
-    const tasks:Array<TaskData> = getTasksInStorage(currentTask)
+    const comments:Array<CommentData> = storage.get(`Comments_${currentTask.id}`)
+    if(comments)return comments
 
-    for(let i=0; i < tasks.length; i++) {        
-        if(tasks[i].id === currentTask.id) {
-            return tasks[i].comments
-        }
-    }
+    return []
 }

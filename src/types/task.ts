@@ -5,7 +5,6 @@ const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS'
 const FETCH_TASKS_ERROR = 'FETCH_TASKS_ERROR'
 const FETCH_CURRENT_TASKS_SUCCESS = 'FETCH_CURRENT_TASKS_SUCCESS'
 const FETCH_SUBTASK_SUCCESS = 'FETCH_SUBTASK_SUCCESS'
-const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS'
 
 export interface TaskState {
     tasks: any[];
@@ -25,13 +24,13 @@ export interface SubtaskState {
     error: null | string;
 }
 
+
 export enum TaskActionTypes {
     FETCH_TASKS = 'FETCH_TASKS',
     FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS',
     FETCH_TASKS_ERROR = 'FETCH_TASKS_ERROR',
     FETCH_CURRENT_TASKS_SUCCESS = 'FETCH_CURRENT_TASKS_SUCCESS',
     FETCH_SUBTASK_SUCCESS = 'FETCH_SUBTASK_SUCCESS',
-    FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS'
 }
 
 interface FetchTasksAction {
@@ -53,11 +52,6 @@ interface FetchSubtaskSuccessAction {
     payload: any;
 }
 
-interface FetchCommentsSuccessAction {
-    type: TaskActionTypes.FETCH_COMMENTS_SUCCESS;
-    payload: any[];
-}
-
 interface FetchTasksErrorAction {
     type: TaskActionTypes.FETCH_TASKS_ERROR;
     payload: string;
@@ -65,17 +59,19 @@ interface FetchTasksErrorAction {
 
 export interface TaskData {
     id: string;
+    number: string;
+    priority: string;
     status: string;
     projectID: string;
     title: string;
     content: string;
     createTime: string;
     closeTime: string;
-    subtasks: SubtaskData[],
-    comments: CommentData[],
+    files: any[];
+    subtasks: SubtaskData[];
 }
 
-export interface SubtaskData extends Omit<TaskData, 'projectID' | 'subtasks' | 'comments' > {
+export interface SubtaskData extends Omit<TaskData, 'projectID' | 'subtasks' | 'comments' | 'files' > {
     taskID: string
 }  
 
@@ -84,4 +80,3 @@ export type TaskAction = FetchTasksAction
                         | FetchTasksErrorAction 
                         | FetchCurrentTaskSuccessAction 
                         | FetchSubtaskSuccessAction 
-                        | FetchCommentsSuccessAction

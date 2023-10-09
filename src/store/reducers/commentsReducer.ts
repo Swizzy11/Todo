@@ -1,5 +1,4 @@
-import { CommentsState } from "../../types/comment"
-import { TaskAction, TaskActionTypes } from "../../types/task"
+import { CommentsAction, CommentsActionTypes, CommentsState } from "../../types/comment"
 
 const inititalState:CommentsState = {
     comments: [],
@@ -7,13 +6,13 @@ const inititalState:CommentsState = {
     error: null
 }
 
-export const commentsReducer = (state = inititalState, action: TaskAction):CommentsState => {
+export const commentsReducer = (state = inititalState, action: CommentsAction):CommentsState => {
     switch (action.type) {
-        case TaskActionTypes.FETCH_TASKS:
+        case CommentsActionTypes.FETCH_COMMENTS:
             return {loading: true, error: null, comments: []}
-        case TaskActionTypes.FETCH_COMMENTS_SUCCESS:
+        case CommentsActionTypes.FETCH_COMMENTS_SUCCESS:
             return {loading: false, error: null, comments: action.payload}
-        case TaskActionTypes.FETCH_TASKS_ERROR:
+        case CommentsActionTypes.FETCH_COMMENTS_ERROR:
             return {loading: false, error: action.payload, comments: [] }
         default:
             return state

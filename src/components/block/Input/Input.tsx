@@ -8,7 +8,8 @@ type InputProps = {
     className?: string,
     textLabel?: string,
     pattern?: string,
-    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    placeholder?: string
+    onChange?: React.ChangeEventHandler<HTMLInputElement>,
 }
 
 export const Input:FC<InputProps> = ({
@@ -18,6 +19,7 @@ export const Input:FC<InputProps> = ({
     className,
     textLabel,
     pattern,
+    placeholder,
     onChange
 }) => {
     return (
@@ -28,6 +30,7 @@ export const Input:FC<InputProps> = ({
                 type={type}
                 value={value}
                 pattern={pattern}
+                placeholder={placeholder}
                 onChange={onChange}
                 required 
             />

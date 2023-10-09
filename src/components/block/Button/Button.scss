@@ -46,7 +46,7 @@
 .btn-add {
     background: none;
     border: none;
-    font-size: 2.1vw;
+    font-size: 1.5vh;
     color: #888;
     cursor: pointer;
 }
@@ -84,7 +84,7 @@
     border: none;
     color: white;
     font-family: Adventure;
-    font-size: 2vw;
+    font-size: 1.2vh;
     z-index: 2;
     cursor: pointer;
 
@@ -93,11 +93,97 @@
     }
 }
 
-@media (min-width: 768px) {} 
-@media (min-width: 992px) {
-    .btn-back,
-    .btn-delete {
-        font-size: .8vw;
+.btn-edit {
+    width: 1.2vh;
+    height: 1.2vh;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url('../../../assets/images/edit-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    
+}
+
+.btn-files {
+    position: absolute;
+    right: .25%;
+    bottom: 10%;
+    width: 1.5vh;
+    height: 1.5vh;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: url('../../../assets/images/add-square-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: contain;
+    cursor: pointer;
+}
+
+@media (min-width: 560px) {
+    .btn-edit {
+        width: 1.4vh;
+        height: 1.4vh;
     }
 }
-@media (min-width: 1200px) {}
+@media (min-width: 768px) {
+    .btn-delete {
+        font-size: 1.2vh;
+    }
+
+    .btn-back {
+        font-size: 1vw;
+    }
+
+    .btn-add {
+        font-size: 1.5vh;
+    }
+
+    .btn-edit {
+        width: 1.8vh;
+        height: 1.8vh;
+    }
+
+    .btn-files {
+        right: .25%;
+        bottom: 5%;
+        width: 1.2vh;
+        height: 1.2vh;
+    }
+} 
+@media (min-width: 992px) {
+    .btn-add {
+        font-size: 1.5vw;
+    }
+
+    .btn-back,
+    .btn-delete {
+        font-size: 1.2vw;
+    }
+
+    .btn-edit {
+        width: 1.8vh;
+        height: 1.8vh;
+    }
+}
+@media (min-width: 1200px) {
+    .btn-add {
+        font-size: 1.5vw;
+    }
+
+    .btn-delete {
+        font-size: 1vw;
+    }
+
+    .btn-back {
+        font-size: .75vw;
+    }
+
+    .btn-edit,
+    .btn-files {
+        width: 2vh;
+        height: 2vh;
+    }
+}

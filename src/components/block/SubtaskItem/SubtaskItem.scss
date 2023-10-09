@@ -6,12 +6,13 @@
     align-items: start;
     border: 1px solid gray;
     border-radius: 4px;
-    font-size: 2vw;
+    font-size: 1.2vh;
 
     .subtaskContent {
         margin: 0 2.5%;
         width: 95%;
-        font-size: 2vw;
+        font-size: 1.5vh;
+        color: white;
     }
 
     span {
@@ -43,7 +44,11 @@
     }
 }
 
-@media (min-width: 768px) {} 
+@media (min-width: 768px) {
+    .subtaskItem {
+        font-size: 1vh;
+    }
+} 
 @media (min-width: 992px) {
     .subtaskItem {
         font-size: 1vw;

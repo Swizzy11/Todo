@@ -4,6 +4,7 @@ import { taskReducer } from "./tasksReducer";
 import { currentTaskReducer } from "./currentTaskReducer";
 import { subtaskReducer } from "./subtaskReducer";
 import { commentsReducer } from "./commentsReducer";
+import { subcommentsReducer } from "./subcommentsReducer";
 
 
 export const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
     tasks: taskReducer,
     currentTask: currentTaskReducer,
     subtask: subtaskReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    subcommets: subcommentsReducer
 })
 

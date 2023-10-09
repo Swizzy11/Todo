@@ -11,6 +11,7 @@ import { AddCommentForm } from '../../components/forms/AddCommentForm'
 import { TaskContent } from '../../components/TaskContent'
 import { Comments } from '../../components/Comments'
 import { DialogModal } from '../../components/DialogModal'
+import { getTimeAtWork } from '../../utils/hooks/getTimeAtWork'
 import './Project.scss'
 
 export const Project = () => {
@@ -57,6 +58,14 @@ export const Project = () => {
                         (task) 
                             ?   <>
                                     <header className='headerCurrentProject'>
+                                        { (task.closeTime !== '') 
+                                        ? 
+                                            <>
+                                                В работе: {getTimeAtWork(task.createTime, task.closeTime)}
+                                            </> 
+                                        : 
+                                                <></>
+                                        }
                                         <Button 
                                             classname='btn-back' 
                                             type={'button'} 
@@ -70,19 +79,31 @@ export const Project = () => {
                                         <TaskContent 
                                             task={task}
                                         />
+                                        
                                         <span className='projectIndicators'>
                                             <time>
                                                 Создано: {task?.createTime}
                                             </time>
                                             <span>
-                                                Статус: {task?.status}
+                                                Статус:
                                                 &nbsp;
                                                 <DialogModal 
-                                                    forTask={true}
                                                     dialogClass={'dialogForStatusBar'}
                                                     inputClass={'status'} 
-                                                    forSubtask={false}                                            
+                                                    forSubtask={false}
+                                                    status={task.status}                                            
                                                 />
+                                            </span>
+                                            <span>
+                                                Приоритет:
+                                                &nbsp;
+                                                <DialogModal 
+                                                        dialogClass={'dialogForPriority'}
+                                                        inputClass={'priority'} 
+                                                        forSubtask={false}
+                                                        forPriority={true}
+                                                        priority={task.priority}                                            
+                                                    />
                                             </span>
                                             <time>
                                                 Закрыто: {task?.closeTime}
