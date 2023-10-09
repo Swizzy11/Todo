@@ -74,7 +74,6 @@ $purple: rgb(132, 0, 255);
 }
 
 .dialogForStatusBar {
-    top: -1100%;
     left: .5vw;
     width: 12vh;
     height: 12vh;
@@ -92,7 +91,10 @@ $purple: rgb(132, 0, 255);
     }
 
 }
-
+.dialogForStatusBar,
+    .dialogForPriority {
+        top: -1350%;
+    }
 .dialogForStatusBar__subtask {
     position: absolute;
     width: 32vw;
@@ -104,7 +106,6 @@ $purple: rgb(132, 0, 255);
     animation: leftApper 150ms ease-in 1;
 }
 .dialogForPriority {
-    top: -1100%;
     left: .5vw;
     width: 5vh;
     height: 12vh;
@@ -208,7 +209,12 @@ $purple: rgb(132, 0, 255);
         height: 20vh;
         font-size: 1vw;
     }
-    
+
+    .dialogForStatusBar,
+    .dialogForPriority {
+        top: -1110%;
+    }
+
     .taskText {
         font-size: 1.4vw;
     }
@@ -273,5 +279,9 @@ $purple: rgb(132, 0, 255);
     }
     .checkbox {
         font-size: 1.5vh;
+    }
+    .dialogForStatusBar,
+    .dialogForPriority {
+        top: -660%;
     }
 }
