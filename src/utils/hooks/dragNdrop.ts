@@ -38,20 +38,20 @@ const onUpdateTaskStatus = (
 ) => {
     const currentTask = storage.get('currentTask')
 
-    if(event.currentTarget.classList[1] === 'content_inProgress') {
+    if(event.currentTarget.classList[1] === 'content_queue') {
         statusController(
                         'update', 
                         currentTask!, 
-                        'inProgress', 
+                        'queue', 
                         dispatch
                     )
     }
 
-    if(event.currentTarget.classList[1] === 'content_onReview') {
+    if(event.currentTarget.classList[1] === 'content_development') {
         statusController(
                         'update', 
                         currentTask!, 
-                        'onReview', 
+                        'development', 
                         dispatch
                     )
     }

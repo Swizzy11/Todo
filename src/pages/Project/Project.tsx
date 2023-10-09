@@ -20,11 +20,6 @@ export const Project = () => {
 
     const navigate = useNavigate()
     const dispatch:Dispatch<any> = useDispatch()
-    
-    const deleteTask = () => {
-        dispatch(fetchCurrentTask('delete', currentTask))
-        dispatch(fetchTasks('delete', currentTask))
-    }
 
     useEffect(() => {
         setTask(currentTask)
@@ -66,13 +61,6 @@ export const Project = () => {
                                         : 
                                                 <></>
                                         }
-                                        <Button 
-                                            classname='btn-back' 
-                                            type={'button'} 
-                                            onClick={deleteTask}
-                                        >
-                                            Удалить задачу
-                                        </Button>
                                     </header>
                                     <main className='mainCurrentProject'>
                                         <br />
