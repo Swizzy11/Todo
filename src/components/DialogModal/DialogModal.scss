@@ -95,6 +95,7 @@ $purple: rgb(132, 0, 255);
     margin-left: 1vw;
     font-size: 2vw;
     display: none;
+    border: none;
     justify-content: start;
     background-color: rgba(0, 0, 0, 0);
     animation: leftApper 150ms ease-in 1;
@@ -149,6 +150,7 @@ $purple: rgb(132, 0, 255);
 .btn-checkbox {
     margin: 0 2%;
     padding: 2px;
+    font-size: 1.2vh;
     outline: none;
     background-color: black;
     color:white;

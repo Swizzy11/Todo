@@ -25,8 +25,10 @@ export const deleteSubtask = (currentTask:TaskData, subtask:SubtaskData ) => {
             
         }
     }
+    currentTask.subtasks = subtasks
 
     storage.set(`Tasks_${currentTask.projectID}`, tasks)
-
+    storage.set('currentTask', currentTask)
+    
     return subtasks
 }
