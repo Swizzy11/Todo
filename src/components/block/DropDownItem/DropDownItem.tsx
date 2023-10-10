@@ -57,7 +57,13 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                                             draggable={true}
                                             onDragStart={onDragStart}
                                         >
-                                            <span onClick={addCurrentTask}>{item.title}</span>
+                                            <label 
+                                                htmlFor='btn-burgers'
+                                                className='taskTitleDropdown' 
+                                                onClick={addCurrentTask}
+                                            >
+                                                {item.title}
+                                            </label>
                                             <Button 
                                                 type={'button'} 
                                                 classname='btn-delete' 

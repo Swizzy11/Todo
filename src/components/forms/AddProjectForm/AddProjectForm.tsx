@@ -1,24 +1,24 @@
-import { FC, ReactNode, useState } from "react"
+import { Dispatch, FC, useState } from "react"
 import { projectController } from "../../../services/Project/projectController"
 import { InputWithButton } from "../../InputWithButton"
 import './AddProjectForm.scss'
+import { createProject } from "../../../utils/hooks/createProject"
+import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
+import { useDispatch } from "react-redux"
+import { fetchProjects } from "../../../store/action-creator/project"
 
-export type AddProjectFormProps = {
-    setProject: React.Dispatch<React.SetStateAction<ReactNode[]>>,
-    projects: ReactNode[]
-}
 
-export const AddProjectForm:FC<AddProjectFormProps> = ({
-    setProject,
-    projects
-}) => {
+export const AddProjectForm:FC = () => {
     const [inputValue, setValue] = useState('')
+    const {projects, loading, error} = useTypedSelector(state => state.projects)
+    const dispatch:Dispatch<any> = useDispatch()
 
     const addProject:React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
 
         if(inputValue !== '') {
-            projectController('add', projects, inputValue, setProject)
+            dispatch(fetchProjects('add', projects, createProject(inputValue)))
+            
             setValue('')
         }
         

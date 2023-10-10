@@ -183,6 +183,12 @@ $purple: rgb(132, 0, 255);
     }
 }
 
+@media (max-height: 660px) {
+    .checkbox {
+        font-size: 1vh;
+    }
+}
+
 @media (min-width: 525px) {
     .dialog {
         left: 24%;

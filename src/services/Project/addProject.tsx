@@ -1,42 +1,18 @@
-import { ReactNode } from "react"
+import { Dispatch, ReactNode } from "react"
 import { ProjectCard } from "../../components/block/ProjectCard"
 import { keyGen } from "../../utils/hooks/keyGen"
 import { getProjects } from "./getProjects"
 import { storage } from "../LocalStorage/LocalStorage"
+import { ProjectData } from "../../types/project"
 
 export const addProject = (
-    projects: ReactNode[],
-    title: string,
-    setProject: React.Dispatch<React.SetStateAction<ReactNode[]>>
+    projects: ProjectData[],
+    currentProject: ProjectData,
     ) => {
-        const key = keyGen()
-        const project = <ProjectCard 
-                            title={title} 
-                            key={key} 
+        if(!projects) return []
 
-                            onClick={() => {return key}} 
-
-                            onDeleteProject={
-                                (e) => {
-                                    let divProject = e.currentTarget.parentNode
-
-                                    localStorage.removeItem(`Project_${key}`)
-                                    if(divProject && divProject.parentNode) {
-                                        divProject.parentNode.removeChild(divProject)
-                                        getProjects()
-                                    }
-                                    
-                                }
-                            }
-                            />
-
-        const projectInfo = {
-            id: key,
-            title: title
-        }
-
-        storage.set(`Project_${key}`, projectInfo)
-        setProject([...projects, project])
+        projects.push(currentProject)
+        storage.set(`Project_${currentProject.id}`, currentProject)
 
         return projects
 }

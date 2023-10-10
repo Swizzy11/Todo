@@ -43,7 +43,7 @@ export const Modal:FC<ModalProps> = ({
                                 className='label-checkbox' 
                                 htmlFor={`modalToggle${subtaskModalClass}`}
                             >
-                                {(forSubtask) ? '(+)' : '+'}
+                                {(forSubtask) ? <p className='buttonContainer'>(+)</p> : '+'}
                             </label>
 
                             <div className="backgroundModal" id="modalPopup">

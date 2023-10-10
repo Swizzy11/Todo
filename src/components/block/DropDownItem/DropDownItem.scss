@@ -74,7 +74,11 @@
     padding: 10px;
     border-top: none;
 }
-
+.taskTitleDropdown {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 
 @keyframes details-show {
     from {

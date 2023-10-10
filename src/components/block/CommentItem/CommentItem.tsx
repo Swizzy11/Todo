@@ -53,7 +53,7 @@ export const CommentItem:FC<CommentItemProps> = ({
                 <div className='buttonWrapper'>
                     <Button 
                         type={'button'} 
-                        classname="btn-add" 
+                        classname="btn-deleteComment" 
                         onClick={onClick}
                     >
                         x
