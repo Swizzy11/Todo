@@ -6,7 +6,7 @@ export const createTask = (title:string, content: string) => {
     let projectID = storage.get('currentProject')
     const number = (storage.get(`Tasks_${projectID}`) !== null) 
                     ? 
-                        storage.get(`Tasks_${projectID}`).length - 1 
+                        storage.get(`Tasks_${projectID}`).length  
                     : 
                         '1'
 
