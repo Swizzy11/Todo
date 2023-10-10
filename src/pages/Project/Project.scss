@@ -2,7 +2,7 @@ $border-color: #5a00a385;
 
 .project {
     width: 100%;
-    height: 95vh;
+    height: 98vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,7 +148,7 @@ h5 {
     }
 
     .headerProject {
-        justify-content: end;
+        justify-content: flex-end;
     }
 
     .projectIndicators {
