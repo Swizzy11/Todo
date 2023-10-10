@@ -11,7 +11,7 @@ export const getSearchItems = (
     if(search === '') {
         setSearchResults([])
     }else {
-        const condition = search.match(/[A-Za-z]/)
+        const condition = search.match(/[A-Za-z\u0400-\u04FF]+/)
 
         if(condition) {
             const result = taskList.filter(item => 
