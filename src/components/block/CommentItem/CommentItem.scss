@@ -38,14 +38,14 @@ $black: black;
 .buttonWrapper {
     width: 95%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .modalWrapper {
     padding: 1%;
     width: 95%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 
