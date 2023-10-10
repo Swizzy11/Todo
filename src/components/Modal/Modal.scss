@@ -84,7 +84,7 @@ $purple: rgb(132, 0, 255);
         background-color: black;
         font-size: 2vw;
         box-shadow: 0px 0px 25px 0px rgba(114, 76, 185, 0.69);
-        border-radius: 15px;
+        border-radius: 8px;
     }
 
     input {
@@ -116,6 +116,7 @@ $purple: rgb(132, 0, 255);
     align-items: center;
     background-color: black;
     z-index: 9999;
+    
     &:target {
         visibility: visible;
     }
