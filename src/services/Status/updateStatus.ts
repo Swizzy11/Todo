@@ -3,8 +3,8 @@ import { storage } from "../LocalStorage/LocalStorage"
 import { Dispatch } from "react"
 import { fetchTasks } from "../../store/action-creator/task"
 import { fetchCurrentTask } from "../../store/action-creator/currentTask"
-import { getTasksInStorage } from "../../utils/hooks/getTasksInStorage"
-import { getCurrentTime } from "../../utils/hooks/getCurrentTime"
+import { getTasksInStorage } from "../../utils/getTasksInStorage"
+import { getCurrentTime } from "../../utils/getCurrentTime"
 
 export const updateStatus = (currentTask:TaskData, status:string, dispatch:Dispatch<any>) => {
     if(!currentTask) {

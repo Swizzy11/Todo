@@ -1,5 +1,5 @@
-import { CommentData } from "../../types/comment"
-import { TaskData } from "../../types/task"
+import { CommentData } from "../types/comment"
+import { TaskData } from "../types/task"
 import { getCurrentTime } from "./getCurrentTime"
 
 export const createComment = (

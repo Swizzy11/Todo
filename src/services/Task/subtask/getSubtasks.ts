@@ -1,5 +1,5 @@
 import { TaskData } from "../../../types/task"
-import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage"
+import { getTasksInStorage } from "../../../utils/getTasksInStorage"
 
 export const getSubtasks = (currentTask: TaskData) => {
     const tasks = getTasksInStorage(currentTask)

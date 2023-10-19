@@ -5,11 +5,11 @@ import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import { Modal } from '../Modal'
 import { useDispatch } from 'react-redux'
 import { fetchSubtask } from '../../store/action-creator/subtask'
-import { createNewSubtask } from '../../utils/hooks/createTask'
+import { createNewSubtask } from '../../utils/createTask'
 import { Button } from '../block/Button'
 import { fetchCurrentTask } from '../../store/action-creator/currentTask'
 import { FilesItem } from '../block/Files'
-import { filePiker } from '../../utils/hooks/filePicker'
+import { filePiker } from '../../utils/filePicker'
 import './TaskContent.scss'
 
 type TaskContentProps = {

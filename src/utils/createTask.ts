@@ -1,5 +1,5 @@
-import { storage } from "../../services/LocalStorage/LocalStorage"
-import { SubtaskData, TaskData } from "../../types/task"
+import { storage } from "../services/LocalStorage/LocalStorage"
+import { SubtaskData, TaskData } from "../types/task"
 import { getCurrentTime } from "./getCurrentTime"
 
 export const createTask = (title:string, content: string) => {

@@ -1,5 +1,5 @@
 import { SubtaskData, TaskData } from "../../../types/task"
-import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage"
+import { getTasksInStorage } from "../../../utils/getTasksInStorage"
 import { storage } from "../../LocalStorage/LocalStorage"
 
 export const addSubtask = (

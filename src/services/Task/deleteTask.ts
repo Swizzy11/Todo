@@ -1,4 +1,4 @@
-import { getTasksInStorage } from "../../utils/hooks/getTasksInStorage"
+import { getTasksInStorage } from "../../utils/getTasksInStorage"
 import { storage } from "../LocalStorage/LocalStorage"
 
 export const deleteTask = (currentTask:any) => {

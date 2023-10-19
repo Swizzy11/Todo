@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
-import { storage } from "../../services/LocalStorage/LocalStorage";
-import { statusController } from "../../services/Status/statusController";
+import { storage } from "../services/LocalStorage/LocalStorage";
+import { statusController } from "../services/Status/statusController";
 
 export const onDragOver = (
     event: React.DragEvent<HTMLUListElement>, 

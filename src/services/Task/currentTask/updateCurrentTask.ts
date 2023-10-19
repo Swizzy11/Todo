@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import { TaskData } from "../../../types/task";
 import { storage } from "../../LocalStorage/LocalStorage";
 import { fetchTasks } from "../../../store/action-creator/task";
-import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage";
+import { getTasksInStorage } from "../../../utils/getTasksInStorage";
 
 
 export const updateCurrentTask = (currentTask: TaskData, dispatch:Dispatch<any>) => {

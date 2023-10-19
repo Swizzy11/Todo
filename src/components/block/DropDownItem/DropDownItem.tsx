@@ -7,7 +7,7 @@ import { fetchSubtask } from '../../../store/action-creator/subtask'
 import { Button } from '../Button'
 import { fetchTasks } from '../../../store/action-creator/task'
 import { fetchComment } from '../../../store/action-creator/comment'
-import { onDragOver, onDragStart, onDrop } from '../../../utils/hooks/dragNdrop'
+import { onDragOver, onDragStart, onDrop } from '../../../utils/dragNdrop'
 import { fetchSubcomment } from '../../../store/action-creator/subcomments'
 import './DropDownItem.scss'
 

@@ -3,8 +3,8 @@ import { SubtaskData, TaskData } from "../../../types/task";
 import { storage } from "../../LocalStorage/LocalStorage";
 import { fetchTasks } from "../../../store/action-creator/task";
 import { fetchCurrentTask } from "../../../store/action-creator/currentTask";
-import { getTasksInStorage } from "../../../utils/hooks/getTasksInStorage";
-import { getCurrentTime } from "../../../utils/hooks/getCurrentTime";
+import { getTasksInStorage } from "../../../utils/getTasksInStorage";
+import { getCurrentTime } from "../../../utils/getCurrentTime";
 
 
 export const updateSubtask = (

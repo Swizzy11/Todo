@@ -1,7 +1,7 @@
 import { Dispatch, FC, useEffect, useState } from 'react'
 import { CommentData } from '../../../types/comment'
 import { Button } from '../Button'
-import { createComment } from '../../../utils/hooks/createComment'
+import { createComment } from '../../../utils/createComment'
 import { useTypedSelector } from '../../../utils/hooks/useTypedSelector'
 import { Subcomment } from '../Subcomment'
 import { Modal } from '../../Modal'

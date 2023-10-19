@@ -4,7 +4,7 @@ import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import { useDispatch } from 'react-redux'
 import { fetchTasks } from '../../store/action-creator/task'
 import { TaskData } from '../../types/task'
-import { createTask } from '../../utils/hooks/createTask'
+import { createTask } from '../../utils/createTask'
 import { Search } from '../Search'
 import './TasksBar.scss'
 

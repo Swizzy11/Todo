@@ -1,5 +1,5 @@
-import { storage } from "../../services/LocalStorage/LocalStorage"
-import { TaskData } from "../../types/task"
+import { storage } from "../services/LocalStorage/LocalStorage"
+import { TaskData } from "../types/task"
 
 
 export const getTasksInStorage = (currentTask: TaskData):Array<TaskData> => {

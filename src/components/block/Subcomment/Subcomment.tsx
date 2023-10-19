@@ -1,6 +1,6 @@
 import { Dispatch, FC, ReactEventHandler, useEffect, useState } from "react"
 import { CommentData } from "../../../types/comment"
-import { createComment } from "../../../utils/hooks/createComment"
+import { createComment } from "../../../utils/createComment"
 import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
 import './Subcomment.scss'
 import { useDispatch } from "react-redux"

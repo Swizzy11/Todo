@@ -1,5 +1,5 @@
 import { Dispatch } from "react"
-import { TaskData } from "../../types/task"
+import { TaskData } from "../types/task"
 
 
 

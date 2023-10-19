@@ -1,5 +1,5 @@
 import { Dispatch, FC, ReactEventHandler, useState } from "react"
-import { createTask } from "../../../utils/hooks/createTask"
+import { createTask } from "../../../utils/createTask"
 import { useDispatch } from "react-redux"
 import { fetchTasks } from "../../../store/action-creator/task"
 import { Modal } from "../../Modal"

@@ -11,7 +11,7 @@ import { AddCommentForm } from '../../components/forms/AddCommentForm'
 import { TaskContent } from '../../components/TaskContent'
 import { Comments } from '../../components/Comments'
 import { DialogModal } from '../../components/DialogModal'
-import { getTimeAtWork } from '../../utils/hooks/getTimeAtWork'
+import { getTimeAtWork } from '../../utils/getTimeAtWork'
 import './Project.scss'
 
 export const Project = () => {

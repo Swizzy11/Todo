@@ -2,7 +2,7 @@ import { Dispatch, FC, useState } from 'react'
 import { Button } from '../../block/Button'
 import { useDispatch } from 'react-redux'
 import { fetchComment } from '../../../store/action-creator/comment'
-import { createComment } from '../../../utils/hooks/createComment'
+import { createComment } from '../../../utils/createComment'
 import { TaskData } from '../../../types/task'
 import './AddCommentForm.scss'
 

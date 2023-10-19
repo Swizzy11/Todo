@@ -2,7 +2,7 @@ import { Dispatch, FC, useState } from "react"
 import { projectController } from "../../../services/Project/projectController"
 import { InputWithButton } from "../../InputWithButton"
 import './AddProjectForm.scss'
-import { createProject } from "../../../utils/hooks/createProject"
+import { createProject } from "../../../utils/createProject"
 import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
 import { useDispatch } from "react-redux"
 import { fetchProjects } from "../../../store/action-creator/project"

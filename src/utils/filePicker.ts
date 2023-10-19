@@ -1,6 +1,6 @@
 import { Dispatch } from "react"
-import { fetchCurrentTask } from "../../store/action-creator/currentTask"
-import { TaskData } from "../../types/task"
+import { fetchCurrentTask } from "../store/action-creator/currentTask"
+import { TaskData } from "../types/task"
 
 
 export const filePiker = async (task:TaskData, dispatch:Dispatch<any>) => {
