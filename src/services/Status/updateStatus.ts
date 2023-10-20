@@ -15,6 +15,8 @@ export const updateStatus = (currentTask:TaskData, status:string, dispatch:Dispa
     let subtasks = currentTask.subtasks
     let isClose = false
 
+    if(!subtasks) return
+
     for(let i=0; i < subtasks.length; i++) {
         isClose = (subtasks[i].status === 'done') ? true : false
     }

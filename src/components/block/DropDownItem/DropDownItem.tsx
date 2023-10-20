@@ -6,6 +6,7 @@ import { Button } from '../Button'
 import { onDragOver, onDragStart, onDrop } from '../../../utils/dragNdrop'
 import { useActions } from '../../../utils/hooks/useActions'
 import './DropDownItem.scss'
+import React from 'react'
 
 type DropDownItemProps = {
     tasks: TaskData[],
@@ -13,7 +14,7 @@ type DropDownItemProps = {
     className: string,
 }
 
-export const DropDownItem:FC<DropDownItemProps> = ({
+export const DropDownItem:FC<DropDownItemProps> = React.memo(({
     tasks,
     title,
     className,
@@ -36,7 +37,7 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                 <ul 
                     className={`content content_${className}`} 
                     onDragOver={(e) => onDragOver(e, dispatch)}
-                    onDrop={(e) =>onDrop(e)}
+                    onDrop={(e) => onDrop(e)}
                 >
                     { 
                         tasks.map((item, index) => {
@@ -87,4 +88,4 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                 </ul>
             </details>
   )
-}
+})

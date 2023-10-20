@@ -27,6 +27,7 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
         setNewComment('')
     }
 
+
     return (
         <form 
             action="" 
@@ -38,7 +39,7 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
                 placeholder='Ваш комментарий...'
                 value={commentValue} 
                 onChange={(e) => 
-                        setNewComment(e.currentTarget.value)
+                        setNewComment(e.target.value)
                     }
             >
             </textarea>

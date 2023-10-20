@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, useEffect, useState } from 'react'
+import { ChangeEvent, Dispatch, useCallback, useEffect, useState } from 'react'
 import { Input } from '../block/Input'
 import { useDispatch } from 'react-redux'
 import { TaskData } from '../../types/task'
@@ -9,6 +9,7 @@ import { Button } from '../block/Button'
 import { getSearchItems } from '../../utils/getSearchItems'
 import { useActions } from '../../utils/hooks/useActions'
 import './Search.scss'
+import { useDebounce } from '../../utils/hooks/useDebounce'
 
 
 export const Search = () => {
@@ -17,6 +18,7 @@ export const Search = () => {
     const [search, setSearch] = useState('')
     const [searchResult, setSearchResults] = useState<Array<TaskData>>([])
     const [taskList, setTask] = useState<Array<TaskData>>([createTask('', '')])
+    
     const { fetchCurrentTask, 
             fetchSubtask, 
             fetchComment,
@@ -24,25 +26,20 @@ export const Search = () => {
             fetchTasks
                         } = useActions()
 
-    const dispatch: Dispatch<any> = useDispatch()
-
-    useEffect(() => {
-        fetchTasks('get')
-    }, [])
-
     useEffect(() => {
         setTask(tasks)
     }, [tasks])
 
-    useEffect(() => {
-        getSearchItems(search, setSearchResults, taskList)
-    }, [search])
-    
-    const handleSearch = (
-        e: ChangeEvent<HTMLInputElement>
-    ) => {
-        setSearch(e.currentTarget.value)
+    const searchItem = (value: string) => {
+        getSearchItems(value, setSearchResults, taskList)
     }
+
+    const debouncedSearch = useDebounce(searchItem, 500)
+
+    const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value)
+        debouncedSearch(e.target.value)
+    }, [])
 
     return (
         <div className='search'>

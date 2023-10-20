@@ -1,17 +1,17 @@
-import { Dispatch, FC } from 'react'
+import { FC } from 'react'
 import { SubtaskData } from '../../../types/task'
 import { Button } from '../Button'
-import { useDispatch } from 'react-redux'
 import { DialogModal } from '../../DialogModal'
 import { useTypedSelector } from '../../../utils/hooks/useTypedSelector'
 import { useActions } from '../../../utils/hooks/useActions'
 import './SubtaskItem.scss'
+import React from 'react'
 
 type SubtaskItemProps = {
     data: SubtaskData
 }
 
-export const SubtaskItem:FC<SubtaskItemProps> = ({
+export const SubtaskItem:FC<SubtaskItemProps> = React.memo(({
     data
 }) => {
     const {currentTask} = useTypedSelector(state => state.currentTask)
@@ -45,4 +45,4 @@ export const SubtaskItem:FC<SubtaskItemProps> = ({
             <time>Создано: {data.createTime} | Закрыто: {data.closeTime}</time>
         </div>
     )
-}
+})

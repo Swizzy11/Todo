@@ -1,12 +1,9 @@
-import { Dispatch, FC, useState } from "react"
+import { FC, useCallback, useState } from "react"
 import { InputWithButton } from "../../InputWithButton"
-import './AddProjectForm.scss'
 import { createProject } from "../../../utils/createProject"
 import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
-import { useDispatch } from "react-redux"
-import { fetchProjects } from "../../../store/action-creator/project"
 import { useActions } from "../../../utils/hooks/useActions"
-
+import './AddProjectForm.scss'
 
 export const AddProjectForm:FC = () => {
     const [inputValue, setValue] = useState('')
@@ -21,7 +18,12 @@ export const AddProjectForm:FC = () => {
             setValue('')
         }
         
-     }
+    }
+
+    const onChange = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value)
+    }, [])
+
     return (
         <form 
             action="_blank" 
@@ -31,7 +33,7 @@ export const AddProjectForm:FC = () => {
                 <InputWithButton
                     groupClass=""
                     inputValue={inputValue}
-                    onChangeInput={(e) => setValue(e.currentTarget.value)} 
+                    onChangeInput={onChange} 
                     inputClass={'forAddProject'} 
                     textLabel={'Название проекта'}
                     buttonType={"submit"}

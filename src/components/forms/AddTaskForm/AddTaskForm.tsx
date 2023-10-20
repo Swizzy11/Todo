@@ -1,4 +1,4 @@
-import { FC, ReactEventHandler, useState } from "react"
+import { FC, ReactEventHandler, useCallback, useState } from "react"
 import { createTask } from "../../../utils/createTask"
 import { Modal } from "../../Modal"
 import { useActions } from "../../../utils/hooks/useActions"
@@ -22,19 +22,21 @@ export const AddTaskForm:FC = () => {
         }
     }
     
+    const onChangeInput = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value)
+    }, [])
+
+    const onChangeTextarea = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setTextareaValue(e.target.value)
+    }, [])
+
     return (
         <form>
             <Modal 
                 inputValue={inputValue}
-                onChangeInput={
-                                (e) => setInputValue(e.currentTarget.value)
-                            }
-                            
+                onChangeInput={onChangeInput}     
                 textareaValue={textareaValue}
-                onChangeTextarea={
-                                    (e) => setTextareaValue(e.currentTarget.value)
-                                }
-
+                onChangeTextarea={onChangeTextarea}
                 onClick={onClick}
                 forSubtask={false}
                 subtaskModalClass=""

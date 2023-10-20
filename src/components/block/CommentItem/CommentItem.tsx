@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import { CommentData } from '../../../types/comment'
 import { Button } from '../Button'
 import { createComment } from '../../../utils/createComment'
@@ -26,7 +26,7 @@ export const CommentItem:FC<CommentItemProps> = ({
     
     const addSubcomment = () => {
         setTextareaValue('')
-       fetchSubcomment(
+        fetchSubcomment(
                         'add', 
                         data, 
                         createComment(

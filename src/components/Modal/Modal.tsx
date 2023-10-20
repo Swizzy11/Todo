@@ -13,7 +13,7 @@ type ModalProps = {
     subcommentsClass?: string
 }
 
-export const Modal:FC<ModalProps> = ({
+export const Modal:FC<ModalProps> = React.memo(({
     inputValue,
     textareaValue,
     onChangeInput,
@@ -135,9 +135,7 @@ export const Modal:FC<ModalProps> = ({
                                 </div>
                             </div>
                     </>
-                    }
-         
+                    }   
     </div>
   )
-}
-
+})

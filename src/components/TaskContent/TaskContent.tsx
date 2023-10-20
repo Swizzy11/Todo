@@ -1,4 +1,4 @@
-import { Dispatch, FC, ReactEventHandler, useEffect, useState } from 'react'
+import { Dispatch, FC, ReactEventHandler, useCallback, useEffect, useMemo, useState } from 'react'
 import { SubtaskData, TaskData } from '../../types/task'
 import { SubtaskItem } from '../block/SubtaskItem'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
@@ -9,13 +9,14 @@ import { Button } from '../block/Button'
 import { FilesItem } from '../block/Files'
 import { filePiker } from '../../utils/filePicker'
 import { useActions } from '../../utils/hooks/useActions'
+import React from 'react'
 import './TaskContent.scss'
 
 type TaskContentProps = {
     task: TaskData
 }
 
-export const TaskContent:FC<TaskContentProps> = ({
+export const TaskContent:FC<TaskContentProps> =  React.memo(({
     task
 }) => {
     const {subtasks} = useTypedSelector(state => state.subtask)
@@ -32,8 +33,7 @@ export const TaskContent:FC<TaskContentProps> = ({
     const {fetchCurrentTask, fetchSubtask} = useActions()
     const dispatch:Dispatch<any> = useDispatch()
 
-
-    const addTask:ReactEventHandler = () => {
+    const addTask:ReactEventHandler = useCallback(() => {
         if(inputValue !== '' && textareaValue !== '') {
 
             fetchSubtask(
@@ -45,10 +45,9 @@ export const TaskContent:FC<TaskContentProps> = ({
             setInputValue('')
             setTextareaValue('')
         }
-    }
+    }, [])
 
     const onChangeTask = () => {
-
         if(!disabled) {
             task.title = title
             task.content = content
@@ -60,8 +59,33 @@ export const TaskContent:FC<TaskContentProps> = ({
         }
     }
 
-    useEffect(() => {
-        if(subtasks)  setSubtasks([...subtasks])
+    const onChangeInput = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value)
+    }, [])
+
+    const onChangeTextarea = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setTextareaValue(e.target.value)
+    }, [])
+
+    const onSetTitle = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value)
+    }, [])
+
+    const onSetContent = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setContent(e.target.value)
+    }, [])
+
+    const onSetDisabled = useCallback(() => {
+        (disabled) ? setDisbled(false): setDisbled(true)
+    }, [])
+
+    const onSetFile = useCallback(() => {
+        filePiker(task, dispatch)
+    }, [])
+
+    
+    useMemo(() => {
+        if(subtasks) setSubtasks([...subtasks])
     }, [subtasks])
 
     return (
@@ -79,14 +103,14 @@ export const TaskContent:FC<TaskContentProps> = ({
                                 className='changeInputTitle' 
                                 placeholder={task?.title}
                                 value={title}
-                                onChange={(e) => setTitle(e.currentTarget.value)}
+                                onChange={onSetTitle}
                             />
                     } 
                     
                     <Button 
                         type={'button'} 
                         classname={'btn-edit'}
-                        onClick={()=> (disabled) ? setDisbled(false): setDisbled(true)} 
+                        onClick={onSetDisabled} 
                     />
                 </h3>
                 <br />
@@ -113,12 +137,12 @@ export const TaskContent:FC<TaskContentProps> = ({
                                 placeholder={task?.content}
                                 value={content}
                                 rows={2}
-                                onChange={(e) => setContent(e.currentTarget.value)}
+                                onChange={onSetContent}
                             />
                             <Button 
                                 type={'button'} 
                                 classname={'btn-files'} 
-                                onClick={() => filePiker(task, dispatch)}
+                                onClick={onSetFile}
                                 />
                         </span>
                         <Button 
@@ -135,13 +159,9 @@ export const TaskContent:FC<TaskContentProps> = ({
                 <br />
                 <Modal 
                     inputValue={inputValue}
-                    onChangeInput={
-                                    (e) => setInputValue(e.currentTarget.value)
-                                }
+                    onChangeInput={onChangeInput}
                     textareaValue={textareaValue}
-                    onChangeTextarea={
-                                        (e) => setTextareaValue(e.currentTarget.value)
-                                    }
+                    onChangeTextarea={onChangeTextarea}
                     onClick={addTask}
                     forSubtask={true}
                     subtaskModalClass='Subtask'
@@ -158,4 +178,4 @@ export const TaskContent:FC<TaskContentProps> = ({
             </div>
     </div>
     )
-}
+})

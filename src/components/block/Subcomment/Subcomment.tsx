@@ -20,7 +20,7 @@ export const Subcomment:FC<SubcommentType> = ({
     const {subcomments} = useTypedSelector(state => state.subcommets)
     const [textareaValue, setTextareaValue] = useState('')
     const {fetchSubcomment} = useActions()
-    
+
     const addSubcomments = () => {
         
         if(textareaValue !== '') {
@@ -60,7 +60,7 @@ export const Subcomment:FC<SubcommentType> = ({
                             forComments={true}
                             subcommentsClass={`${data.id}`}
                             onChangeTextarea={(e) => 
-                                    setTextareaValue(e.currentTarget.value)
+                                    setTextareaValue(e.target.value)
                                     }
                             onClick={addSubcomments}
                         />

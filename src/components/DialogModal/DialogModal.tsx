@@ -5,6 +5,7 @@ import { SubtaskData } from '../../types/task'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import  './DialogModal.scss'
 import { useActions } from '../../utils/hooks/useActions'
+import React from 'react'
 
 type DialogModalProps = {
     dialogClass: string,
@@ -16,7 +17,7 @@ type DialogModalProps = {
     priority?: string,
 }
 
-export const DialogModal:FC<DialogModalProps> = ({
+export const DialogModal:FC<DialogModalProps> = React.memo(({
     dialogClass,
     inputClass,
     forSubtask,
@@ -152,4 +153,4 @@ export const DialogModal:FC<DialogModalProps> = ({
             </dialog>
         </div>
     )
-}
+})
