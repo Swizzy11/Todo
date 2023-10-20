@@ -1,12 +1,11 @@
-import { Dispatch, FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { CommentData } from '../../../types/comment'
 import { Button } from '../Button'
 import { createComment } from '../../../utils/createComment'
 import { useTypedSelector } from '../../../utils/hooks/useTypedSelector'
 import { Subcomment } from '../Subcomment'
 import { Modal } from '../../Modal'
-import { useDispatch } from 'react-redux'
-import { fetchSubcomment } from '../../../store/action-creator/subcomments'
+import { useActions } from '../../../utils/hooks/useActions'
 import './CommentItem.scss'
 
 type CommentItemProps = {
@@ -23,12 +22,11 @@ export const CommentItem:FC<CommentItemProps> = ({
 
     const [textareaValue, setTextareaValue] = useState('')
     const [subcomment, setSubcomment] = useState<Array<CommentData>>([])
-
-    const dispatch:Dispatch<any> = useDispatch()
+    const {fetchSubcomment} = useActions()
     
     const addSubcomment = () => {
         setTextareaValue('')
-        dispatch(fetchSubcomment(
+       fetchSubcomment(
                         'add', 
                         data, 
                         createComment(
@@ -37,10 +35,10 @@ export const CommentItem:FC<CommentItemProps> = ({
                             data!.id
                         )
                     )
-                )  
     }
+
     useEffect(() => {
-        dispatch(fetchSubcomment('get', data))
+        fetchSubcomment('get', data)
     }, [])
 
     useEffect(() => {     
@@ -48,8 +46,7 @@ export const CommentItem:FC<CommentItemProps> = ({
     }, [subcomments])
 
     return (
-        <>
-            <blockquote className="comment">
+            <blockquote className="comment" >
                 <div className='buttonWrapper'>
                     <Button 
                         type={'button'} 
@@ -78,12 +75,14 @@ export const CommentItem:FC<CommentItemProps> = ({
                 {
                 subcomment.map((item, index) => {
                     const deleteSubcomment = () => {
-                        dispatch(fetchSubcomment('delete', data, item))
+                        fetchSubcomment('delete', data, item)
                     }
+
                     return (
                         (item.commentID === data!.id)
                             ?
                                 <Subcomment
+                                    key={index}
                                     data={item}
                                     deleteSubcomments={deleteSubcomment} 
                                 />
@@ -93,7 +92,5 @@ export const CommentItem:FC<CommentItemProps> = ({
                 })
             }
             </blockquote>
-            
-        </>
     )
 }

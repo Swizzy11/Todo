@@ -36,7 +36,7 @@ export const updateSubtask = (
 
                     storage.set(`currentTask`, currentTask)
                     storage.set(`Tasks_${currentTask.projectID}`, tasks)
-
+                    
                     dispatch!(fetchTasks('update', tasks[i], tasks, currentTask.projectID))
                     dispatch!(fetchCurrentTask('update', currentTask, dispatch))
                     

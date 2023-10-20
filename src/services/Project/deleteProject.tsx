@@ -1,7 +1,4 @@
 import { ProjectData } from "../../types/project"
-import { storage } from "../LocalStorage/LocalStorage"
-
-
 
 export const deleteProject = (
     projects: ProjectData[], 

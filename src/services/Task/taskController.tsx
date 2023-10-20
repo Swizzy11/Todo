@@ -4,7 +4,6 @@ import { TaskData } from "../../types/task"
 import { deleteTask } from "./deleteTask"
 import { updateTask } from "./updateTask"
 
-
 export const taskController = (
     method: string,
     task?: TaskData | null,

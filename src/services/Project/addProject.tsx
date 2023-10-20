@@ -1,7 +1,3 @@
-import { Dispatch, ReactNode } from "react"
-import { ProjectCard } from "../../components/block/ProjectCard"
-import { keyGen } from "../../utils/keyGen"
-import { getProjects } from "./getProjects"
 import { storage } from "../LocalStorage/LocalStorage"
 import { ProjectData } from "../../types/project"
 

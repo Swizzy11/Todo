@@ -1,9 +1,8 @@
-import { Dispatch, FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { Button } from '../../block/Button'
-import { useDispatch } from 'react-redux'
-import { fetchComment } from '../../../store/action-creator/comment'
 import { createComment } from '../../../utils/createComment'
 import { TaskData } from '../../../types/task'
+import { useActions } from '../../../utils/hooks/useActions'
 import './AddCommentForm.scss'
 
 type AddCommentFormProps = {
@@ -14,17 +13,17 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
     currentTask
 }) => {
     const [commentValue, setNewComment] = useState('')
-    const dispatch:Dispatch<any> = useDispatch()
+    const {fetchComment} = useActions()
 
     const addComment:React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
         if(commentValue === '') return
         
-        dispatch(fetchComment(
-                                'add',
-                                currentTask, 
-                                createComment(currentTask, commentValue, `${Date.now()}`)
-                            ))
+        fetchComment(
+                        'add',
+                        currentTask, 
+                        createComment(currentTask, commentValue, `${Date.now()}`)
+                    )
         setNewComment('')
     }
 

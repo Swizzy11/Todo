@@ -1,10 +1,10 @@
 import { Dispatch, FC } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchSubtask } from '../../store/action-creator/subtask'
 import { statusController } from '../../services/Status/statusController'
 import { SubtaskData } from '../../types/task'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import  './DialogModal.scss'
+import { useActions } from '../../utils/hooks/useActions'
 
 type DialogModalProps = {
     dialogClass: string,
@@ -25,8 +25,9 @@ export const DialogModal:FC<DialogModalProps> = ({
     forPriority,
     priority
 }) => {
-    const dispatch:Dispatch<any> = useDispatch()
     const {currentTask} = useTypedSelector(state => state.currentTask)
+    const {fetchSubtask} = useActions()
+    const dispatch:Dispatch<any> = useDispatch()
 
     return (
         <div className={'dialogModal'}>            
@@ -59,23 +60,23 @@ export const DialogModal:FC<DialogModalProps> = ({
                             statusController(
                                 'update',
                                 currentTask!, 
-                                'queue', 
+                                'queue',
                                 dispatch
                             )
                         : (!forPriority) 
                         ?
-                            dispatch(fetchSubtask(
+                            fetchSubtask(
                                 'update', 
                                 currentTask, 
                                 subtask, 
-                                'queue', 
+                                'queue',
                                 dispatch
-                            ))
+                            )
                         :
                         statusController(
                             'priority', 
                             currentTask!, 
-                            '', 
+                            '',
                             dispatch,
                             '1'
                         )                      
@@ -92,23 +93,23 @@ export const DialogModal:FC<DialogModalProps> = ({
                             statusController(
                                 'update', 
                                 currentTask!, 
-                                'development', 
+                                'development',
                                 dispatch
                             )
                         : (!forPriority) 
                         ? 
-                            dispatch(fetchSubtask(
+                            fetchSubtask(
                                 'update', 
                                 currentTask, 
                                 subtask, 
                                 'development',
                                 dispatch
-                            ))
+                            )
                             
                         : statusController(
                             'priority', 
                             currentTask!, 
-                            '', 
+                            '',
                             dispatch,
                             '2'
                         )  
@@ -125,22 +126,22 @@ export const DialogModal:FC<DialogModalProps> = ({
                             statusController(
                                 'update', 
                                 currentTask!, 
-                                'doneTasks', 
+                                'doneTasks',
                                 dispatch
                             )
                         : (!forPriority) 
                         ?  
-                            dispatch(fetchSubtask(
+                           fetchSubtask(
                                 'update', 
                                 currentTask, 
                                 subtask, 
-                                'done', 
+                                'done',
                                 dispatch
-                            ))
+                            )
                         : statusController(
                             'priority', 
                             currentTask!, 
-                            '', 
+                            '',
                             dispatch,
                             '3'
                         ) 

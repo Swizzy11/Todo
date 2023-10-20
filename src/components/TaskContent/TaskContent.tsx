@@ -4,12 +4,11 @@ import { SubtaskItem } from '../block/SubtaskItem'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import { Modal } from '../Modal'
 import { useDispatch } from 'react-redux'
-import { fetchSubtask } from '../../store/action-creator/subtask'
 import { createNewSubtask } from '../../utils/createTask'
 import { Button } from '../block/Button'
-import { fetchCurrentTask } from '../../store/action-creator/currentTask'
 import { FilesItem } from '../block/Files'
 import { filePiker } from '../../utils/filePicker'
+import { useActions } from '../../utils/hooks/useActions'
 import './TaskContent.scss'
 
 type TaskContentProps = {
@@ -30,17 +29,18 @@ export const TaskContent:FC<TaskContentProps> = ({
     const [inputValue, setInputValue] = useState('')
     const [textareaValue, setTextareaValue] = useState('')
 
+    const {fetchCurrentTask, fetchSubtask} = useActions()
     const dispatch:Dispatch<any> = useDispatch()
 
 
     const addTask:ReactEventHandler = () => {
         if(inputValue !== '' && textareaValue !== '') {
 
-            dispatch(fetchSubtask(
+            fetchSubtask(
                 'add', 
                 currentTask, 
                 createNewSubtask(inputValue, textareaValue, currentTask)
-            ))
+            )
 
             setInputValue('')
             setTextareaValue('')
@@ -53,7 +53,7 @@ export const TaskContent:FC<TaskContentProps> = ({
             task.title = title
             task.content = content
 
-            dispatch(fetchCurrentTask('update', task, dispatch))
+            fetchCurrentTask('update', task)
             setDisbled(true)
         } else {
             setDisbled(false)

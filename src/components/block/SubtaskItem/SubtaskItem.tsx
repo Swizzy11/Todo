@@ -2,24 +2,23 @@ import { Dispatch, FC } from 'react'
 import { SubtaskData } from '../../../types/task'
 import { Button } from '../Button'
 import { useDispatch } from 'react-redux'
-import { fetchSubtask } from '../../../store/action-creator/subtask'
 import { DialogModal } from '../../DialogModal'
 import { useTypedSelector } from '../../../utils/hooks/useTypedSelector'
+import { useActions } from '../../../utils/hooks/useActions'
 import './SubtaskItem.scss'
 
 type SubtaskItemProps = {
-    key: string | number,
     data: SubtaskData
 }
 
 export const SubtaskItem:FC<SubtaskItemProps> = ({
-    key,
     data
 }) => {
-    const dispatch:Dispatch<any> = useDispatch()
     const {currentTask} = useTypedSelector(state => state.currentTask)
+    const {fetchSubtask} = useActions()
+    
     return (
-        <div className='subtaskItem' key={key}> 
+        <div className='subtaskItem'> 
             <span>
                 <span>Задача: {data.title} | Статус
                     <DialogModal 
@@ -28,13 +27,13 @@ export const SubtaskItem:FC<SubtaskItemProps> = ({
                         forSubtask={true}
                         subtask={data}                            
                     /> &nbsp;&nbsp;
-                    :&nbsp; {data.status} 
+                    &nbsp; {data.status} 
                 </span>  
                     <Button 
                         type={'button'} 
                         classname='btn-delete'
                         onClick={() => 
-                                dispatch(fetchSubtask('delete', currentTask, data))
+                                fetchSubtask('delete', currentTask, data)
                             }
                     >
                         Delete

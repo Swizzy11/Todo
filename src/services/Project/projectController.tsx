@@ -1,6 +1,5 @@
-import { Dispatch, ReactNode } from "react"
 import { addProject } from "./addProject"
-import { getProjects } from "./getProjects"
+import { getProjects } from "./getProject"
 import { deleteProject } from "./deleteProject"
 import { ProjectData } from "../../types/project"
 

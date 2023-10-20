@@ -1,8 +1,7 @@
 import { storage } from "../LocalStorage/LocalStorage";
 
-
 export const getProjects = () => {
-    let projectsData = storage.getAllByKey('Project');
+    let projectData = storage.getAllByKey('Project');
 
-    return projectsData
+    return projectData
 }

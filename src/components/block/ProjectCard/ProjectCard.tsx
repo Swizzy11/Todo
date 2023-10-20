@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactEventHandler, ReactNode } from 'react'
+import { FC, ReactEventHandler, ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Button'
 import { storage } from '../../../services/LocalStorage/LocalStorage'
@@ -17,14 +17,14 @@ export const ProjectCard:FC<ProjectCardProps> = ({
 }) => {
     const navigate = useNavigate()
 
-    const onNavigate:ReactEventHandler = () => {
+    const onClick:ReactEventHandler = () => {
             storage.set('currentProject', id)
             navigate(`/project`)
     }
 
     return (
         <div className='projectCard' key={id!}>
-            <div className="projectCardName" onClick={onNavigate} >
+            <div className="projectCardName" onClick={onClick} >
                 {title}
             </div>
             <Button 

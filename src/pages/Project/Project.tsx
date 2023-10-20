@@ -1,25 +1,22 @@
-import { Dispatch, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { TasksBar } from '../../components/TasksBar'
 import { Button } from '../../components/block/Button'
 import { TaskData } from '../../types/task'
-import { fetchCurrentTask } from '../../store/action-creator/currentTask'
-import { fetchTasks } from '../../store/action-creator/task'
 import { AddCommentForm } from '../../components/forms/AddCommentForm'
 import { TaskContent } from '../../components/TaskContent'
 import { Comments } from '../../components/Comments'
 import { DialogModal } from '../../components/DialogModal'
 import { getTimeAtWork } from '../../utils/getTimeAtWork'
+import { useActions } from '../../utils/hooks/useActions'
 import './Project.scss'
 
-export const Project = () => {
+export const Project:FC = () => {
     const {currentTask, loading, error} = useTypedSelector(state => state.currentTask)
     const [task, setTask] = useState<TaskData>(currentTask)
-
+    const {fetchCurrentTask,} = useActions()
     const navigate = useNavigate()
-    const dispatch:Dispatch<any> = useDispatch()
 
     useEffect(() => {
         setTask(currentTask)
@@ -39,7 +36,7 @@ export const Project = () => {
                         classname='btn-back' 
                         onClick={() => {
                             navigate('/')
-                            dispatch(fetchCurrentTask('delete'))
+                            fetchCurrentTask('delete')
                         }}
                     >
                         К проектам

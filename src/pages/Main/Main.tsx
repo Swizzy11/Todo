@@ -1,21 +1,20 @@
-import { useDispatch } from 'react-redux'
-import { Dispatch, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { AddProjectForm } from '../../components/forms/AddProjectForm'
 import { BackgroundAnimation } from '../../components/BackgroundAnimation'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
-import { fetchProjects } from '../../store/action-creator/project'
 import { Loader } from '../../components/Loader'
 import { ProjectCard } from '../../components/block/ProjectCard'
 import { ProjectData } from '../../types/project'
+import { useActions } from '../../utils/hooks/useActions'
 import  './Main.scss'
 
-export const Main = () => {
+export const Main:FC = () => {
     const {projects, loading, error} = useTypedSelector(state => state.projects)
     const [projectsInState, setProjects] = useState<Array<ProjectData>>([])
-    const dispatch: Dispatch<any> = useDispatch()
+    const {fetchProjects} = useActions()
 
     useEffect(() => {
-        dispatch(fetchProjects('get'))
+        fetchProjects('get')
     }, [])
 
     useEffect(() => {
@@ -30,13 +29,14 @@ export const Main = () => {
                     <div className='loaderContainer'>
                         <Loader />
                     </div>
-                :   projectsInState.map((item) => {
+                :   projectsInState.map((item, index) => {
                     
-                        return <ProjectCard 
+                        return <ProjectCard
+                                    key={index} 
                                     id={item.id}
                                     title={item.title} 
                                     onDeleteProject={() => {
-                                            dispatch(fetchProjects('delete',projects, item))
+                                            fetchProjects('delete',projects, item)
                                         }}
                                     
                                 />

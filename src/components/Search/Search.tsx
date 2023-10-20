@@ -1,17 +1,13 @@
 import { ChangeEvent, Dispatch, useEffect, useState } from 'react'
 import { Input } from '../block/Input'
-import { fetchTasks } from '../../store/action-creator/task'
 import { useDispatch } from 'react-redux'
 import { TaskData } from '../../types/task'
 import { createTask } from '../../utils/createTask'
 import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
-import { fetchComment } from '../../store/action-creator/comment'
-import { fetchCurrentTask } from '../../store/action-creator/currentTask'
-import { fetchSubcomment } from '../../store/action-creator/subcomments'
-import { fetchSubtask } from '../../store/action-creator/subtask'
 import { onDragStart } from '../../utils/dragNdrop'
 import { Button } from '../block/Button'
 import { getSearchItems } from '../../utils/getSearchItems'
+import { useActions } from '../../utils/hooks/useActions'
 import './Search.scss'
 
 
@@ -21,11 +17,17 @@ export const Search = () => {
     const [search, setSearch] = useState('')
     const [searchResult, setSearchResults] = useState<Array<TaskData>>([])
     const [taskList, setTask] = useState<Array<TaskData>>([createTask('', '')])
+    const { fetchCurrentTask, 
+            fetchSubtask, 
+            fetchComment,
+            fetchSubcomment, 
+            fetchTasks
+                        } = useActions()
 
     const dispatch: Dispatch<any> = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchTasks('get'))
+        fetchTasks('get')
     }, [])
 
     useEffect(() => {
@@ -55,14 +57,14 @@ export const Search = () => {
                     { 
                         searchResult.map((item, index) => {
                                 const addCurrentTask = () => {
-                                    dispatch(fetchCurrentTask('add', item))
-                                    dispatch(fetchSubtask('get', item))
-                                    dispatch(fetchComment('get', item))
-                                    dispatch(fetchSubcomment('get'))
+                                    fetchCurrentTask('add', item)
+                                    fetchSubtask('get', item)
+                                    fetchComment('get', item)
+                                    fetchSubcomment('get')
                                 }
                                 const deleteTask = () => {
-                                    dispatch(fetchTasks('delete', item))
-                                    dispatch(fetchCurrentTask('delete', item))
+                                    fetchTasks('delete', item)
+                                    fetchCurrentTask('delete', item)
 
                                     for(let i=0; i < searchResult.length; i++) {
                                         if(searchResult[i].title === item.title) {

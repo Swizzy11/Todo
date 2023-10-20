@@ -1,13 +1,11 @@
-import { Dispatch, FC, ReactEventHandler, useEffect, useState } from "react"
+import { FC, useState } from "react"
 import { CommentData } from "../../../types/comment"
 import { createComment } from "../../../utils/createComment"
 import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
-import './Subcomment.scss'
-import { useDispatch } from "react-redux"
 import { Modal } from "../../Modal"
-import { fetchSubcomment } from "../../../store/action-creator/subcomments"
 import { Button } from "../Button"
-import { storage } from "../../../services/LocalStorage/LocalStorage"
+import { useActions } from "../../../utils/hooks/useActions"
+import './Subcomment.scss'
 
 type SubcommentType = {
     data: CommentData,
@@ -20,11 +18,9 @@ export const Subcomment:FC<SubcommentType> = ({
 }) => {
     const {currentTask} = useTypedSelector(state => state.currentTask)
     const {subcomments} = useTypedSelector(state => state.subcommets)
-
     const [textareaValue, setTextareaValue] = useState('')
-
-    const dispatch:Dispatch<any> = useDispatch()
-
+    const {fetchSubcomment} = useActions()
+    
     const addSubcomments = () => {
         
         if(textareaValue !== '') {
@@ -35,17 +31,14 @@ export const Subcomment:FC<SubcommentType> = ({
                                     data?.id!
                                 )
 
-            dispatch(fetchSubcomment('add', data, newComment))
-
-            
+            fetchSubcomment('add', data, newComment)   
         }else {
             console.log('Введите название')
         }
     }
 
     return (
-        <>
-            <blockquote className="subcomment" >
+            <blockquote className="subcomment">
                 <div className='buttonWrapper'>
                     <Button 
                         type={'button'} 
@@ -77,12 +70,13 @@ export const Subcomment:FC<SubcommentType> = ({
                     subcomments.map((item, index) => {
   
                         const deleteSubcomment = () => {
-                            dispatch(fetchSubcomment('delete', data, item))
+                            fetchSubcomment('delete', data, item)
                         }
                         return (
                                 (item.commentID === data.id)
                                 ?
-                                    <Subcomment 
+                                    <Subcomment
+                                        key={index} 
                                         data={item} 
                                         deleteSubcomments={deleteSubcomment}
                                     />
@@ -92,7 +86,7 @@ export const Subcomment:FC<SubcommentType> = ({
                     })
                 }
             </blockquote>
-            
-        </>
     )
 }
+
+

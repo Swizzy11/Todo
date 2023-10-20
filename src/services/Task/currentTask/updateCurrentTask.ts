@@ -17,9 +17,5 @@ export const updateCurrentTask = (currentTask: TaskData, dispatch:Dispatch<any>)
 
             return currentTask
         }
-    }
-    
-
-    
-   
+    } 
 }

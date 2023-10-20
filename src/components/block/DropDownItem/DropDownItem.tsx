@@ -2,13 +2,9 @@ import { Dispatch, FC } from 'react'
 import { TaskData } from '../../../types/task'
 import { AddTaskForm } from '../../forms/AddTaskForm'
 import { useDispatch } from 'react-redux'
-import { fetchCurrentTask } from '../../../store/action-creator/currentTask'
-import { fetchSubtask } from '../../../store/action-creator/subtask'
 import { Button } from '../Button'
-import { fetchTasks } from '../../../store/action-creator/task'
-import { fetchComment } from '../../../store/action-creator/comment'
 import { onDragOver, onDragStart, onDrop } from '../../../utils/dragNdrop'
-import { fetchSubcomment } from '../../../store/action-creator/subcomments'
+import { useActions } from '../../../utils/hooks/useActions'
 import './DropDownItem.scss'
 
 type DropDownItemProps = {
@@ -24,7 +20,12 @@ export const DropDownItem:FC<DropDownItemProps> = ({
 
 }) => {
     const dispatch:Dispatch<any> = useDispatch()
-
+    const { fetchCurrentTask, 
+            fetchSubtask, 
+            fetchComment,
+            fetchSubcomment, 
+            fetchTasks
+                        } = useActions()
     
   return (
             <details className={`details details_${className}`}>
@@ -41,15 +42,16 @@ export const DropDownItem:FC<DropDownItemProps> = ({
                         tasks.map((item, index) => {
                             if(className === item.status) {
                                 const addCurrentTask = () => {
-                                    dispatch(fetchCurrentTask('add', item))
-                                    dispatch(fetchSubtask('get', item))
-                                    dispatch(fetchComment('get', item))
-                                    dispatch(fetchSubcomment('get'))
+                                    fetchCurrentTask('add', item)
+                                    fetchSubtask('get', item)
+                                    fetchComment('get', item)
+                                    fetchSubcomment('get')
                                 }
                                 const deleteTask = () => {
-                                    dispatch(fetchTasks('delete', item))
-                                    dispatch(fetchCurrentTask('delete', item))
+                                    fetchTasks('delete', item)
+                                    fetchCurrentTask('delete', item)
                                 }
+                                
                                 return <li  
                                             id={`${index}`}
                                             className='task'
