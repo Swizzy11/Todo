@@ -1,33 +1,21 @@
-import { ReactNode } from "react"
+import { createBrowserRouter } from "react-router-dom"
 import { Main } from "../pages/Main"
 import { Project } from "../pages/Project"
+import { NotFound } from "../pages/NotFound"
 
-
-interface IRoute {
-    /**
-     * Идентификатор роута
-     */
-    id: string | number
-    /**
-     * Адрес страницы
-     */
-    path: string
-    /**
-     * Компонент страницы
-     */
-    component: ReactNode
-  }
-
-
-  export const routes: IRoute[] = [
+  export const routes = createBrowserRouter([
     {
       id: 'main',
       path: '/',
-      component: <Main />,
+      element: <Main />,
     },
     {
       id: 'project',
       path: '/project',
-      component: <Project />,
+      element: <Project />,
+    },
+    {
+      path: '*',
+      element: <NotFound />
     }
-  ]
+  ])
