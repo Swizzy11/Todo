@@ -7,19 +7,7 @@ export const getCurrentTask = () => {
     let currentTask:TaskData = storage.get('currentTask')
 
     if(!currentTask) {
-        currentTask = {
-            id: '',
-            priority: '',
-            files: [],
-            number: '',
-            status: '',
-            projectID: '',
-            title: '',
-            content: '',
-            createTime: '',
-            closeTime: '',
-            subtasks: []
-        }
+        currentTask = {} as TaskData
        currentTaskController('add', currentTask)
     }
     return currentTask

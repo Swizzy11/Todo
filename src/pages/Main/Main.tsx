@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react'
-import { AddProjectForm } from '../../components/forms/AddProjectForm'
-import { BackgroundAnimation } from '../../components/BackgroundAnimation'
-import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
-import { Loader } from '../../components/Loader'
-import { ProjectCard } from '../../components/block/ProjectCard'
+import { AddProjectForm } from '../../modules/forms/AddProjectForm'
+import { BackgroundAnimation } from '../../UI/BackgroundAnimation'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { Loader } from '../../UI/Loader'
+import { ProjectCard } from '../../components/ProjectCard'
 import { ProjectData } from '../../types/project'
-import { useActions } from '../../utils/hooks/useActions'
+import { useActions } from '../../hooks/useActions'
 import  './Main.scss'
 
 export const Main:FC = () => {

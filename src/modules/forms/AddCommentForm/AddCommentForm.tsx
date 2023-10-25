@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
-import { Button } from '../../block/Button'
+import { Button } from '../../../UI/Button'
 import { createComment } from '../../../utils/createComment'
 import { TaskData } from '../../../types/task'
-import { useActions } from '../../../utils/hooks/useActions'
+import { useActions } from '../../../hooks/useActions'
 import './AddCommentForm.scss'
 
 type AddCommentFormProps = {

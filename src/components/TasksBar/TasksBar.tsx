@@ -1,11 +1,11 @@
 import { Dispatch, useEffect, useMemo, useState } from 'react'
-import { DropDownItem } from '../block/DropDownItem'
-import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
+import { DropDownItem } from '../DropDownItem'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useDispatch } from 'react-redux'
 import { fetchTasks } from '../../store/action-creator/task'
 import { TaskData } from '../../types/task'
 import { createTask } from '../../utils/createTask'
-import { Search } from '../Search'
+import { Search } from '../../modules/Search'
 import './TasksBar.scss'
 
 export const TasksBar = () => {

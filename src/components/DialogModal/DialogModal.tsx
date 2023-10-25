@@ -1,11 +1,10 @@
-import { Dispatch, FC } from 'react'
+import React, { Dispatch, FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { statusController } from '../../services/Status/statusController'
 import { SubtaskData } from '../../types/task'
-import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { useActions } from '../../hooks/useActions'
 import  './DialogModal.scss'
-import { useActions } from '../../utils/hooks/useActions'
-import React from 'react'
 
 type DialogModalProps = {
     dialogClass: string,

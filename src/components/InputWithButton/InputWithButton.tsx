@@ -1,6 +1,6 @@
 import { FC, ReactEventHandler } from 'react'
-import { Button } from '../block/Button'
-import { Input } from '../block/Input'
+import { Button } from '../../UI/Button'
+import { Input } from '../../UI/Input'
 import './InputWithButton.scss'
 
 type InputWithButtonProps = {

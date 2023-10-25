@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Button } from '../../components/block/Button'
+import { Button } from '../../UI/Button'
 import { FC } from 'react'
 import './NotFound.scss'
 

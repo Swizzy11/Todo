@@ -1,12 +1,11 @@
-import { Dispatch, FC } from 'react'
-import { TaskData } from '../../../types/task'
-import { AddTaskForm } from '../../forms/AddTaskForm'
+import React, { Dispatch, FC } from 'react'
+import { TaskData } from '../../types/task'
+import { AddTaskForm } from '../../modules/forms/AddTaskForm'
 import { useDispatch } from 'react-redux'
-import { Button } from '../Button'
-import { onDragOver, onDragStart, onDrop } from '../../../utils/dragNdrop'
-import { useActions } from '../../../utils/hooks/useActions'
+import { Button } from '../../UI/Button'
+import { onDragOver, onDragStart, onDrop } from '../../utils/dragNdrop'
+import { useActions } from '../../hooks/useActions'
 import './DropDownItem.scss'
-import React from 'react'
 
 type DropDownItemProps = {
     tasks: TaskData[],
@@ -36,8 +35,8 @@ export const DropDownItem:FC<DropDownItemProps> = React.memo(({
 
                 <ul 
                     className={`content content_${className}`} 
-                    onDragOver={(e) => onDragOver(e, dispatch)}
-                    onDrop={(e) => onDrop(e)}
+                    onDragOver={ (e) => onDragOver(e, dispatch) }
+                    onDrop={ (e) => onDrop(e) }
                 >
                     { 
                         tasks.map((item, index) => {
@@ -81,7 +80,7 @@ export const DropDownItem:FC<DropDownItemProps> = React.memo(({
                     {
                         (title === 'Tasks') 
                         ?   <li className='task'>
-                                <AddTaskForm />
+                                <AddTaskForm  forSubtask={false} />
                             </li>
                         : <></>
                     }

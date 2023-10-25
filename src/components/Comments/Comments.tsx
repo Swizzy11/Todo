@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { CommentItem } from '../block/CommentItem'
-import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
+import { CommentItem } from '../CommentItem'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { CommentData } from '../../types/comment'
-import { useActions } from '../../utils/hooks/useActions'
+import { useActions } from '../../hooks/useActions'
 import './Comments.scss'
 
 export const Comments:FC = () => {

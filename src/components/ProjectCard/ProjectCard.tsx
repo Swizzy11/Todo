@@ -1,7 +1,7 @@
 import { FC, ReactEventHandler, ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '../Button'
-import { storage } from '../../../services/LocalStorage/LocalStorage'
+import { Button } from '../../UI/Button'
+import { storage } from '../../services/LocalStorage/LocalStorage'
 import './ProjectCard.scss'
 
 type ProjectCardProps = {

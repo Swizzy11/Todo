@@ -1,11 +1,11 @@
 import { FC, useCallback, useEffect, useState } from 'react'
-import { CommentData } from '../../../types/comment'
-import { Button } from '../Button'
-import { createComment } from '../../../utils/createComment'
-import { useTypedSelector } from '../../../utils/hooks/useTypedSelector'
+import { CommentData } from '../../types/comment'
+import { Button } from '../../UI/Button'
+import { createComment } from '../../utils/createComment'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Subcomment } from '../Subcomment'
-import { Modal } from '../../Modal'
-import { useActions } from '../../../utils/hooks/useActions'
+import { Modal } from '../../UI/Modal'
+import { useActions } from '../../hooks/useActions'
 import './CommentItem.scss'
 
 type CommentItemProps = {

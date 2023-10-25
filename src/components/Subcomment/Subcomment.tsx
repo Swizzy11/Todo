@@ -1,10 +1,10 @@
 import { FC, useState } from "react"
-import { CommentData } from "../../../types/comment"
-import { createComment } from "../../../utils/createComment"
-import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
-import { Modal } from "../../Modal"
-import { Button } from "../Button"
-import { useActions } from "../../../utils/hooks/useActions"
+import { CommentData } from "../../types/comment"
+import { createComment } from "../../utils/createComment"
+import { useTypedSelector } from "../../hooks/useTypedSelector"
+import { Modal } from "../../UI/Modal"
+import { Button } from "../../UI/Button"
+import { useActions } from "../../hooks/useActions"
 import './Subcomment.scss'
 
 type SubcommentType = {

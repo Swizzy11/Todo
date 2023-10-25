@@ -1,23 +1,19 @@
-import { ChangeEvent, Dispatch, useCallback, useEffect, useState } from 'react'
-import { Input } from '../block/Input'
-import { useDispatch } from 'react-redux'
+import { ChangeEvent, useCallback, useEffect, useState, useTransition } from 'react'
+import { Input } from '../../UI/Input'
 import { TaskData } from '../../types/task'
-import { createTask } from '../../utils/createTask'
-import { useTypedSelector } from '../../utils/hooks/useTypedSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { onDragStart } from '../../utils/dragNdrop'
-import { Button } from '../block/Button'
+import { Button } from '../../UI/Button'
 import { getSearchItems } from '../../utils/getSearchItems'
-import { useActions } from '../../utils/hooks/useActions'
+import { useActions } from '../../hooks/useActions'
 import './Search.scss'
-import { useDebounce } from '../../utils/hooks/useDebounce'
-
 
 export const Search = () => {
     const {tasks, loading, error} = useTypedSelector(state => state.tasks)
-
-    const [search, setSearch] = useState('')
+    const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResults] = useState<Array<TaskData>>([])
-    const [taskList, setTask] = useState<Array<TaskData>>([createTask('', '')])
+    const [taskList, setTask] = useState<Array<TaskData>>([{} as TaskData])
+    const [isPanding, startTransition] = useTransition()
     
     const { fetchCurrentTask, 
             fetchSubtask, 
@@ -30,15 +26,12 @@ export const Search = () => {
         setTask(tasks)
     }, [tasks])
 
-    const searchItem = (value: string) => {
-        getSearchItems(value, setSearchResults, taskList)
-    }
-
-    const debouncedSearch = useDebounce(searchItem, 500)
 
     const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
-        debouncedSearch(e.target.value)
+        setSearchValue(e.target.value)
+        startTransition(() => {
+            getSearchItems(e.target.value, setSearchResults, taskList)
+        })
     }, [])
 
     return (
@@ -47,10 +40,11 @@ export const Search = () => {
                 type={'text'} 
                 className='inputSearch' 
                 onChange={handleSearch} 
-                value={search}
+                value={searchValue}
                 placeholder={'Search tasks...'}
             />
             <ul>
+                {isPanding && <h3>Поиск...</h3>}
                     { 
                         searchResult.map((item, index) => {
                                 const addCurrentTask = () => {

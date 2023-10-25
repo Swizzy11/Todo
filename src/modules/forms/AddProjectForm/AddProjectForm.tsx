@@ -1,8 +1,8 @@
 import { FC, useCallback, useState } from "react"
-import { InputWithButton } from "../../InputWithButton"
+import { InputWithButton } from "../../../components/InputWithButton"
 import { createProject } from "../../../utils/createProject"
-import { useTypedSelector } from "../../../utils/hooks/useTypedSelector"
-import { useActions } from "../../../utils/hooks/useActions"
+import { useTypedSelector } from "../../../hooks/useTypedSelector"
+import { useActions } from "../../../hooks/useActions"
 import './AddProjectForm.scss'
 
 export const AddProjectForm:FC = () => {
