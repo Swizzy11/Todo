@@ -56,11 +56,11 @@ const onUpdateTaskStatus = (
             )
     }
 
-    if(event.currentTarget.classList[1] === 'content_doneTasks') {
+    if(event.currentTarget.classList[1] === 'content_done') {
             statusController(
                 'update', 
                 currentTask!, 
-                'doneTasks', 
+                'done', 
                 dispatch
             )
     }

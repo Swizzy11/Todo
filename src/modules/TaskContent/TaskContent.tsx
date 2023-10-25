@@ -1,15 +1,16 @@
 import React from 'react'
-import { Dispatch, FC, useCallback, useMemo, useState } from 'react'
+import { Dispatch, FC, useMemo, useState } from 'react'
 import { SubtaskData, TaskData } from '../../types/task'
 import { SubtaskItem } from '../../components/SubtaskItem'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useDispatch } from 'react-redux'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { FilesItem } from '../../UI/Files'
 import { filePiker } from '../../utils/filePicker'
 import { useActions } from '../../hooks/useActions'
 import { AddTaskForm } from '../forms/AddTaskForm'
 import { Row } from 'antd'
+import { EditOutlined, FileAddOutlined } from '@ant-design/icons'
 import './TaskContent.scss'
 
 type TaskContentProps = {
@@ -26,7 +27,7 @@ export const TaskContent:FC<TaskContentProps> =  React.memo(({
     const [title, setTitle] = useState(task.title)
     const [content, setContent] = useState(task.content)
 
-    const {fetchCurrentTask, fetchSubtask} = useActions()
+    const {fetchCurrentTask} = useActions()
     const dispatch:Dispatch<any> = useDispatch()
 
 
@@ -35,28 +36,28 @@ export const TaskContent:FC<TaskContentProps> =  React.memo(({
             task.title = title
             task.content = content
 
-            fetchCurrentTask('update', task)
+            fetchCurrentTask('update', task, dispatch)
             setDisbled(true)
         } else {
             setDisbled(false)
         }
     }
 
-    const onSetTitle = useCallback((e:React.ChangeEvent<HTMLInputElement>) => {
+    const onSetTitle = (e:React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value)
-    }, [])
+    }
 
-    const onSetContent = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const editContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setContent(e.target.value)
-    }, [])
+    }
 
-    const onSetDisabled = useCallback(() => {
+    const onSetDisabled = () => {
         (disabled) ? setDisbled(false): setDisbled(true)
-    }, [])
+    }
 
-    const onSetFile = useCallback(() => {
+    const onSetFile = () => {
         filePiker(task, dispatch)
-    }, [])
+    }
 
     
     useMemo(() => {
@@ -80,11 +81,8 @@ export const TaskContent:FC<TaskContentProps> =  React.memo(({
                                 value={title}
                                 onChange={onSetTitle}
                             />
-                    } 
-                    
-                    <Button 
-                        type={'button'} 
-                        classname={'btn-edit'}
+                    }
+                    <EditOutlined 
                         onClick={onSetDisabled} 
                     />
                 </h3>
@@ -96,9 +94,9 @@ export const TaskContent:FC<TaskContentProps> =  React.memo(({
                             {task.content}
                             <div className='taskFiles'>
                                 {
-                                    task.files.map((item) => {
+                                    task.files.map((item, index) => {
                                         return (
-                                            <FilesItem fileName={item} />
+                                            <FilesItem fileName={item} key={index} />
                                         )
                                     })
                                 }
@@ -112,21 +110,25 @@ export const TaskContent:FC<TaskContentProps> =  React.memo(({
                                 placeholder={task?.content}
                                 value={content}
                                 rows={2}
-                                onChange={onSetContent}
+                                onChange={editContent}
                             />
-                            <Button 
-                                type={'button'} 
-                                classname={'btn-files'} 
-                                onClick={onSetFile}
-                                />
+                            
                         </span>
-                        <Button 
-                            type={'button'} 
-                            onClick={onChangeTask}
-                            classname={'btn-back'}
-                        >
-                            Изменить
-                        </Button>
+                        <Row justify={'space-between'}>
+                            <ButtonHost 
+                                type={'button'} 
+                                onClick={onChangeTask}
+                                classname={'btn-back'}
+                            >
+                                Изменить
+                            </ButtonHost>
+                            <FileAddOutlined
+                                    className='btn-files'
+                                    style={{fontSize: '2.5vh'}} 
+                                    onClick={onSetFile}
+                                />
+                        </Row>
+                        
                     </>
                 }
             </section>

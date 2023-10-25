@@ -1,11 +1,10 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { SubtaskData } from '../../types/task'
-import { Button } from '../../UI/Button'
-import { DialogModal } from '../DialogModal'
+import { ButtonHost } from '../../UI/ButtonHost'
+import { SlidingModal } from '../SlidingModal'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useActions } from '../../hooks/useActions'
 import './SubtaskItem.scss'
-import React from 'react'
 
 type SubtaskItemProps = {
     data: SubtaskData
@@ -21,15 +20,15 @@ export const SubtaskItem:FC<SubtaskItemProps> = React.memo(({
         <div className='subtaskItem'> 
             <span>
                 <span>Задача: {data.title} | Статус
-                    <DialogModal 
+                    <SlidingModal 
                         dialogClass={'dialogForStatusBar__subtask'}
                         inputClass={data.id} 
                         forSubtask={true}
                         subtask={data}                            
-                    /> &nbsp;&nbsp;
-                    &nbsp; {data.status} 
+                    /> 
+                    &nbsp;&nbsp;{data.status} 
                 </span>  
-                    <Button 
+                    <ButtonHost 
                         type={'button'} 
                         classname='btn-delete'
                         onClick={() => 
@@ -37,7 +36,7 @@ export const SubtaskItem:FC<SubtaskItemProps> = React.memo(({
                             }
                     >
                         Delete
-                        </Button>
+                    </ButtonHost>
             </span>
             <span className='subtaskContent'>
                 {data.content}

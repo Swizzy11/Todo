@@ -9,6 +9,7 @@ export const updateCurrentTask = (currentTask: TaskData, dispatch:Dispatch<any>)
     const tasks = getTasksInStorage(currentTask)
 
     for(let i=0; i < tasks.length; i++) {
+
         if(tasks[i].id === currentTask.id) {
             tasks[i] = currentTask
 

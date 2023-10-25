@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler, ReactNode } from "react";
-import './Button.scss'
+import './ButtonHost.scss'
 
-type ButtonProps = {
+type ButtonHostProps = {
     type:  "button" | "submit" | "reset" | undefined,
     children?: ReactNode,
     classname?: string,
@@ -9,7 +9,7 @@ type ButtonProps = {
     isActive?: boolean
 }
 
-export const Button:FC<ButtonProps> = ({
+export const ButtonHost:FC<ButtonHostProps> = ({
     type,
     children,
     classname,

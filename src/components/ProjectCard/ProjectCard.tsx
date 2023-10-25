@@ -1,6 +1,6 @@
 import { FC, ReactEventHandler, ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { storage } from '../../services/LocalStorage/LocalStorage'
 import './ProjectCard.scss'
 
@@ -27,13 +27,13 @@ export const ProjectCard:FC<ProjectCardProps> = ({
             <div className="projectCardName" onClick={onClick} >
                 {title}
             </div>
-            <Button 
+            <ButtonHost 
                 type={'button'} 
                 classname={'btn-exit'} 
                 onClick={onDeleteProject}
             >
                 x
-            </Button>
+            </ButtonHost>
         </div>
         
     )

@@ -74,10 +74,10 @@ $black: black;
 @media (min-width: 560px) {
     .comment {
         padding: 3%;
-        padding-left: 10%;
+        padding-left: 6%;
 
         p {
-            font-size: 1vh;
+            font-size: 1.4vh;
         }
     }
     .btn-deleteComment {
@@ -87,7 +87,7 @@ $black: black;
 @media (min-width: 768px) {
     .comment {
         padding: 2%;
-        padding-left: 10%;
+        padding-left: 6%;
     }
     .btn-deleteComment {
         font-size: 1.5vh;

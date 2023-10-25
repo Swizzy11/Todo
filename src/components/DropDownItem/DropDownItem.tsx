@@ -2,7 +2,7 @@ import React, { Dispatch, FC } from 'react'
 import { TaskData } from '../../types/task'
 import { AddTaskForm } from '../../modules/forms/AddTaskForm'
 import { useDispatch } from 'react-redux'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { onDragOver, onDragStart, onDrop } from '../../utils/dragNdrop'
 import { useActions } from '../../hooks/useActions'
 import './DropDownItem.scss'
@@ -66,13 +66,13 @@ export const DropDownItem:FC<DropDownItemProps> = React.memo(({
                                             >
                                                 {item.title}
                                             </label>
-                                            <Button 
+                                            <ButtonHost 
                                                 type={'button'} 
                                                 classname='btn-delete' 
                                                 onClick={deleteTask}
                                             >
                                                 X
-                                            </Button>
+                                            </ButtonHost>
                                         </li>
                             }
                         })

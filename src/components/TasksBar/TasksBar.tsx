@@ -9,7 +9,7 @@ import { Search } from '../../modules/Search'
 import './TasksBar.scss'
 
 export const TasksBar = () => {
-    const {tasks, loading, error} = useTypedSelector(state => state.tasks)
+    const {tasks} = useTypedSelector(state => state.tasks)
     const [taskList, setTask] = useState<Array<TaskData>>([createTask('', '')])
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -42,7 +42,7 @@ export const TasksBar = () => {
                 />
               <DropDownItem
                     tasks={taskList}
-                    className={'doneTasks'}
+                    className={'done'}
                     title={'Done'}
                 />
           </div>

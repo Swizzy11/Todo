@@ -20,9 +20,7 @@ export const Comments:FC = () => {
                             ?
                                 <CommentItem
                                             key={index}
-                                            onClick={() => 
-                                                fetchComment('delete', currentTask, item)
-                                            } 
+                                            onClick={() =>fetchComment('delete', currentTask, item)} 
                                             data={item}
                                         />
                             : 

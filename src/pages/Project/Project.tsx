@@ -2,18 +2,18 @@ import { FC, useEffect, useState } from 'react'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useNavigate } from 'react-router-dom'
 import { TasksBar } from '../../components/TasksBar'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { TaskData } from '../../types/task'
 import { AddCommentForm } from '../../modules/forms/AddCommentForm'
 import { TaskContent } from '../../modules/TaskContent'
 import { Comments } from '../../components/Comments'
-import { DialogModal } from '../../components/DialogModal'
+import { SlidingModal } from '../../components/SlidingModal'
 import { getTimeAtWork } from '../../utils/getTimeAtWork'
 import { useActions } from '../../hooks/useActions'
 import './Project.scss'
 
 export const Project:FC = () => {
-    const {currentTask, loading, error} = useTypedSelector(state => state.currentTask)
+    const {currentTask} = useTypedSelector(state => state.currentTask)
     const [task, setTask] = useState<TaskData>(currentTask)
     const {fetchCurrentTask,} = useActions()
     const navigate = useNavigate()
@@ -26,12 +26,12 @@ export const Project:FC = () => {
     return(
             <div className="project">
                 <header className='headerProject'>
-                <label htmlFor="btn-burgers" className='btn-burger'>
-                    <span className='btn-burger-element-1'></span>
-                    <span className='btn-burger-element-2'></span>
-                    <span className='btn-burger-element-3'></span>
-                </label>
-                    <Button 
+                    <label htmlFor="btn-burgers" className='btn-burger'>
+                        <span className='btn-burger-element-1'></span>
+                        <span className='btn-burger-element-2'></span>
+                        <span className='btn-burger-element-3'></span>
+                    </label>
+                    <ButtonHost 
                         type={'button'} 
                         classname='btn-back' 
                         onClick={() => {
@@ -40,7 +40,7 @@ export const Project:FC = () => {
                         }}
                     >
                         К проектам
-                    </Button>
+                    </ButtonHost>
                 </header>
             <main className='mainProject'>
             <input type="checkbox" className='checkbox-burger' id='btn-burgers' />
@@ -70,9 +70,8 @@ export const Project:FC = () => {
                                                 Создано: {task?.createTime}
                                             </time>
                                             <span>
-                                                Статус:
-                                                &nbsp;
-                                                <DialogModal 
+                                                Статус:&nbsp;
+                                                <SlidingModal 
                                                     dialogClass={'dialogForStatusBar'}
                                                     inputClass={'status'} 
                                                     forSubtask={false}
@@ -80,9 +79,8 @@ export const Project:FC = () => {
                                                 />
                                             </span>
                                             <span>
-                                                Приоритет:
-                                                &nbsp;
-                                                <DialogModal 
+                                                Приоритет:&nbsp;
+                                                <SlidingModal 
                                                         dialogClass={'dialogForPriority'}
                                                         inputClass={'priority'} 
                                                         forSubtask={false}

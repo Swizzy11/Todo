@@ -3,7 +3,7 @@ import { CommentData } from "../../types/comment"
 import { createComment } from "../../utils/createComment"
 import { useTypedSelector } from "../../hooks/useTypedSelector"
 import { Modal } from "../../UI/Modal"
-import { Button } from "../../UI/Button"
+import { ButtonHost } from "../../UI/ButtonHost"
 import { useActions } from "../../hooks/useActions"
 import './Subcomment.scss'
 
@@ -40,13 +40,13 @@ export const Subcomment:FC<SubcommentType> = ({
     return (
             <blockquote className="subcomment">
                 <div className='buttonWrapper'>
-                    <Button 
+                    <ButtonHost 
                         type={'button'} 
                         classname="btn-add" 
                         onClick={deleteSubcomments}
                     >
                         x
-                    </Button>
+                    </ButtonHost>
                 </div>
                 <p>
                 {data?.content}

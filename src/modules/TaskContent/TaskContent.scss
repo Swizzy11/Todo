@@ -59,14 +59,26 @@
     border: none;
 
     textarea {
+        padding: 4px 2vh;
         width: 100%;
         font-size: 1vh;
         resize: none;
-        padding: 0 .2%;
         background-color: rgba(61, 61, 61, 0.288);
         border: 1px solid rgba(255, 255, 255, 0.6);
         color:white;
-        border-radius: 4px;  
+        border-radius: 4px;
+        overflow: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 5px; 
+        }
+        &::-webkit-scrollbar-track {
+            background: #6666667e;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #666666;
+        }  
     }
 }
 
@@ -97,6 +109,8 @@
 
 .taskFiles {
     display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-top: 5%;
 }
 
@@ -121,8 +135,9 @@
         padding: 0;
         width: 100%;
 
-        textarea {
-            font-size: 1.5vw;
+        textarea { 
+            padding: 4px 1.7vw;
+            font-size: 1.25vw;
         }
     }
     

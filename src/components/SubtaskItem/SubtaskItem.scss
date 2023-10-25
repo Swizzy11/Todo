@@ -24,6 +24,8 @@
         align-items: center;
         span {
             margin: .6%;
+            font-size: 1vh;
+            font-weight: 700;
             justify-content: start;
         }
     }
@@ -39,9 +41,6 @@
         margin: 0;
     }
 
-    .dialogModal {
-        margin-left: 1%;
-    }
 }
 
 @media (min-width: 768px) {
@@ -52,12 +51,23 @@
 @media (min-width: 992px) {
     .subtaskItem {
         font-size: 1vw;
+
+        span {
+            span {
+                font-size: 1vw;
+            }
+        }
     }
 }
 @media (min-width: 1200px) {
     .subtaskItem {
         font-size: 1vh;
 
+        span {
+            span {
+                font-size: .75vw;
+            }
+        }
         .subtaskContent {
             margin: 1% 2.5%;
             font-size: 1.2vw;

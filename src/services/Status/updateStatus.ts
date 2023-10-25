@@ -30,8 +30,10 @@ export const updateStatus = (currentTask:TaskData, status:string, dispatch:Dispa
         if(tasks[i].id === currentTask.id) {
             tasks[i].status = status
 
-            if(status === 'doneTasks' && isClose) {
+            if(status === 'done' && isClose) {
                 tasks[i].closeTime = getCurrentTime()
+            }else {
+                tasks[i].closeTime = ''
             }
 
             storage.set(`currentTask`, tasks[i])

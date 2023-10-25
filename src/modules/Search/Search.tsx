@@ -3,7 +3,7 @@ import { Input } from '../../UI/Input'
 import { TaskData } from '../../types/task'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { onDragStart } from '../../utils/dragNdrop'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { getSearchItems } from '../../utils/getSearchItems'
 import { useActions } from '../../hooks/useActions'
 import './Search.scss'
@@ -27,12 +27,12 @@ export const Search = () => {
     }, [tasks])
 
 
-    const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value)
         startTransition(() => {
             getSearchItems(e.target.value, setSearchResults, taskList)
         })
-    }, [])
+    }
 
     return (
         <div className='search'>
@@ -75,13 +75,13 @@ export const Search = () => {
                                             >
                                                 {item.title}
                                             </span>
-                                            <Button 
+                                            <ButtonHost 
                                                 type={'button'} 
                                                 classname='btn-delete' 
                                                 onClick={deleteTask}
                                             >
                                                 X
-                                            </Button>
+                                            </ButtonHost>
                                         </li>
                             }
                         )

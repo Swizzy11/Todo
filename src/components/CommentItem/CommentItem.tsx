@@ -1,6 +1,6 @@
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { CommentData } from '../../types/comment'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { createComment } from '../../utils/createComment'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Subcomment } from '../Subcomment'
@@ -48,13 +48,13 @@ export const CommentItem:FC<CommentItemProps> = ({
     return (
             <blockquote className="comment" >
                 <div className='buttonWrapper'>
-                    <Button 
+                    <ButtonHost 
                         type={'button'} 
                         classname="btn-deleteComment" 
                         onClick={onClick}
                     >
                         x
-                    </Button>
+                    </ButtonHost>
                 </div>
                 <p>
                 {data?.content}

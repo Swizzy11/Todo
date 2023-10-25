@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Button } from '../../../UI/Button'
+import { ButtonHost } from '../../../UI/ButtonHost'
 import { createComment } from '../../../utils/createComment'
 import { TaskData } from '../../../types/task'
 import { useActions } from '../../../hooks/useActions'
@@ -43,9 +43,9 @@ export const AddCommentForm:FC<AddCommentFormProps> = ({
                     }
             >
             </textarea>
-            <Button classname='btn-back' type={'submit'}>
+            <ButtonHost classname='btn-back' type={'submit'}>
                 Добавить
-            </Button>
+            </ButtonHost>
         </form>
     )
 }

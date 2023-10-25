@@ -1,5 +1,5 @@
 import { FC, ReactEventHandler } from 'react'
-import { Button } from '../../UI/Button'
+import { ButtonHost } from '../../UI/ButtonHost'
 import { Input } from '../../UI/Input'
 import './InputWithButton.scss'
 
@@ -35,13 +35,13 @@ export const InputWithButton:FC<InputWithButtonProps> = ({
                 textLabel={textLabel}
                 onChange={onChangeInput} 
             />
-            <Button 
+            <ButtonHost 
                 type={buttonType} 
                 classname={buttonClass}
                 onClick={onClick}
             >
                 {buttonContent}
-            </Button>
+            </ButtonHost>
         </div>
     )
 }
